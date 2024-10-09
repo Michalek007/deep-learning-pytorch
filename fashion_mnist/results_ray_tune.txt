@@ -1,0 +1,17 @@
+Best trial config: {'fc': 64, 'lr': 0.0017979012084060025, 'batch_size': 16}
+Best trial final validation loss: 0.30924348792557915
+Best trial final validation accuracy: 0.8881666666666667
+Best trial test set accuracy: 0.8823
+(func pid=7900) [2, 12000] loss: 0.096
+
+
+Best trial config: {'c1': 2, 'c2': 16, 'lr': 0.015421670225292113, 'b': 8}
+Best trial final validation loss: 0.5032794393164416
+Best trial final validation accuracy: 0.8179166666666666
+Best trial test set accuracy: 0.8095
+
+
+Best trial config: {'c1': 4, 'c2': 4, 'fc': 64, 'lr': 0.03058753404758928, 'b': 16}
+Best trial final validation loss: 0.522854571638008
+Best trial final validation accuracy: 0.82025
+Best trial test set accuracy: 0.8195
