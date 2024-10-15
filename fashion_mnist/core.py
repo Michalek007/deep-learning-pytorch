@@ -4,6 +4,8 @@ from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 import torch.nn.functional as F
+from torch.onnx import dynamo_export
+# import torch.onnx.dynamo_export
 
 
 training_data = datasets.FashionMNIST(
@@ -24,8 +26,8 @@ test_data = datasets.FashionMNIST(
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
-        conv1_out = 2
-        conv2_out = 16
+        conv1_out = 4
+        conv2_out = 4
         fc1_out = 64
         kernel_size = 5
         self.conv1 = nn.Conv2d(1, conv1_out, kernel_size)
@@ -49,7 +51,7 @@ class NeuralNetwork(nn.Module):
 
 model = NeuralNetwork()
 learning_rate = 0.015421670225292113
-epochs = 10
+epochs = 5
 batch_size = 8
 
 train_dataloader = DataLoader(training_data, batch_size=batch_size)
@@ -98,20 +100,31 @@ def test_loop(dataloader, model, loss_fn):
     return correct
 
 
-loss_fn = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+if __name__ == "__main__":
+    train = False
+    if train:
+        loss_fn = nn.CrossEntropyLoss()
+        optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
-correct = 0
-for t in range(epochs):
-    print(f"Epoch {t+1}\n-------------------------------")
-    train_loop(train_dataloader, model, loss_fn, optimizer)
-    correct = test_loop(test_dataloader, model, loss_fn)
-print("Done!")
+        correct = 0
+        for t in range(epochs):
+            print(f"Epoch {t+1}\n-------------------------------")
+            train_loop(train_dataloader, model, loss_fn, optimizer)
+            correct = test_loop(test_dataloader, model, loss_fn)
+        print("Done!")
 
-with open('results.txt', 'a') as f:
-    f.write(f'{model.name} lr:{learning_rate};batch_size:{batch_size};epochs:{epochs}\n')
-    f.write(str(model))
-    f.write(f'Accuracy: {(100*correct):>0.1f}%')
-    f.write('\n\n')
+        with open('results.txt', 'a') as f:
+            f.write(f'{model.name} lr:{learning_rate};batch_size:{batch_size};epochs:{epochs}\n')
+            f.write(str(model))
+            f.write(f'Accuracy: {(100*correct):>0.1f}%')
+            f.write('\n\n')
 
-# torch.save(model.state_dict(), f'model_name.pth')
+        torch.save(model.state_dict(), "fashion_mnist.pth")
+
+    if not train:
+        model.load_state_dict(torch.load('fashion_mnist.pth', weights_only=True))
+        model.eval()
+
+    torch_input = torch.randn(1, 1, 28, 28)
+    onnx_program = torch.onnx.dynamo_export(model, torch_input)
+    onnx_program.save("fashion_mnist.onnx")
