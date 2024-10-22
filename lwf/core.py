@@ -12,10 +12,62 @@ training_data = datasets.LFWPairs(
     split="train",
     download=True
 )
-plt.imshow(training_data[0][0])
-plt.show()
-plt.imshow(training_data[0][1])
-plt.show()
+
+print(training_data.pair_names)
+
+# same = 0
+# diff = 0
+# same_set = set()
+# diff_set = set()
+# for label1, label2 in training_data.pair_names:
+#     if label1 == label2:
+#         same += 1
+#         same_set.add(label1)
+#         same_set.add(label2)
+#     else:
+#         diff += 1
+#         diff_set.add(label1)
+#         diff_set.add(label2)
+#
+# print(same)
+# print(diff)
+# print(len(same_set))
+# print(len(diff_set))
+
+
+same_idx = []
+diff_idx = []
+for i, (label1, label2) in enumerate(training_data.pair_names):
+    if label1 == label2:
+        same_idx.append(i)
+    else:
+        diff_idx.append(i)
+
+
+triplets = []
+for i in range(len(same_idx)):
+    triplets.append((same_idx[i], (diff_idx[i], i%2)))
+print(triplets)
+
+triplets_labels = []
+for same_idx, (diff_idx, idx) in triplets:
+    triplets_labels.append((training_data.pair_names[same_idx], training_data.pair_names[diff_idx][idx]))
+    if triplets_labels[-1][1] in triplets_labels[-1][0]:
+        print(triplets_labels[-1])
+
+print(triplets_labels)
+# plt.imshow(training_data[0][0])
+# plt.show()
+# plt.imshow(training_data[0][1])
+# plt.show()
+# print(training_data[0][2])
+#
+# plt.imshow(training_data[1][0])
+# plt.show()
+# plt.imshow(training_data[1][1])
+# plt.show()
+# print(training_data[1][2])
+
 
 
 # training_data = datasets.LFWPairs(
@@ -50,3 +102,35 @@ plt.show()
 #
 #
 # display_image()
+
+
+# triplet_loss = nn.TripletMarginLoss(margin=1.0, p=2, eps=1e-7)
+# anchor = torch.randn(100, 128, requires_grad=True)
+# positive = torch.randn(100, 128, requires_grad=True)
+# negative = torch.randn(100, 128, requires_grad=True)
+# output = triplet_loss(anchor, positive, negative)
+# print(output)
+# output.backward()
+
+
+# model.train()
+# for epoch in tqdm(range(epochs), desc="Epochs"):
+#     running_loss = []
+#     for step, (anchor_img, positive_img, ne
+#     gative_img, anchor_label) in enumerate(
+#             tqdm(train_loader, desc="Training", leave=False)):
+#         anchor_img = anchor_img.to(device)
+#         positive_img = positive_img.to(device)
+#         negative_img = negative_img.to(device)
+#
+#         optimizer.zero_grad()
+#         anchor_out = model(anchor_img)
+#         positive_out = model(positive_img)
+#         negative_out = model(negative_img)
+#
+#         loss = criterion(anchor_out, positive_out, negative_out)
+#         loss.backward()
+#         optimizer.step()
+#
+#         running_loss.append(loss.cpu().detach().numpy())
+#     print("Epoch: {}/{} - Loss: {:.4f}".format(epoch + 1, epochs, np.mean(running_loss)))
