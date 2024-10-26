@@ -5,15 +5,22 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
+from lwf_dataset import LWFDataset
 
 
-training_data = datasets.LFWPairs(
+training_data = LWFDataset(
     root="data",
     split="train",
     download=True
 )
 
-print(training_data.pair_names)
+# training_data = datasets.LFWPairs(
+#     root="data",
+#     split="train",
+#     download=True
+# )
+#
+# print(training_data.pair_names)
 
 # same = 0
 # diff = 0
@@ -35,37 +42,46 @@ print(training_data.pair_names)
 # print(len(diff_set))
 
 
-same_idx = []
-diff_idx = []
-for i, (label1, label2) in enumerate(training_data.pair_names):
-    if label1 == label2:
-        same_idx.append(i)
-    else:
-        diff_idx.append(i)
 
 
-triplets = []
-for i in range(len(same_idx)):
-    triplets.append((same_idx[i], (diff_idx[i], i%2)))
-print(triplets)
-
-triplets_labels = []
-for same_idx, (diff_idx, idx) in triplets:
-    triplets_labels.append((training_data.pair_names[same_idx], training_data.pair_names[diff_idx][idx]))
-    if triplets_labels[-1][1] in triplets_labels[-1][0]:
-        print(triplets_labels[-1])
-
-print(triplets_labels)
-# plt.imshow(training_data[0][0])
-# plt.show()
-# plt.imshow(training_data[0][1])
-# plt.show()
-# print(training_data[0][2])
+# same_idx = []
+# diff_idx = []
+# for i, (label1, label2) in enumerate(training_data.pair_names):
+#     if label1 == label2:
+#         same_idx.append(i)
+#     else:
+#         diff_idx.append(i)
 #
-# plt.imshow(training_data[1][0])
-# plt.show()
-# plt.imshow(training_data[1][1])
-# plt.show()
+#
+# triplets = []
+# for i in range(len(same_idx)):
+#     triplets.append((same_idx[i], (diff_idx[i], i%2)))
+# print(triplets)
+#
+# triplets_labels = []
+# for same_idx, (diff_idx, idx) in triplets:
+#     triplets_labels.append((training_data.pair_names[same_idx], training_data.pair_names[diff_idx][idx]))
+#     if triplets_labels[-1][1] in triplets_labels[-1][0]:
+#         print(triplets_labels[-1])
+#
+# print(triplets_labels)
+
+
+
+plt.imshow(training_data[0][0])
+plt.show()
+plt.imshow(training_data[0][1])
+plt.show()
+plt.imshow(training_data[0][2])
+plt.show()
+# print(training_data[0][2])
+
+plt.imshow(training_data[1][0])
+plt.show()
+plt.imshow(training_data[1][1])
+plt.show()
+plt.imshow(training_data[1][2])
+plt.show()
 # print(training_data[1][2])
 
 

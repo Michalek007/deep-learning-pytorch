@@ -32,4 +32,5 @@ for torch_output, onnxruntime_output in zip(torch_outputs, onnxruntime_outputs):
 
 print("PyTorch and ONNX Runtime output matched!")
 print(f"Output length: {len(onnxruntime_outputs)}")
-print(f"Sample output: {onnxruntime_outputs}")
+print(f"ONNX output: {onnxruntime_outputs}")
+print(f"Torch output: {torch_outputs}")
