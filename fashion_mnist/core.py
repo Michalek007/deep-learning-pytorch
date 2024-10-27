@@ -8,21 +8,6 @@ from torch.onnx import dynamo_export
 from utils.nn_utils import get_conv_output_size, get_max_pool_output_size
 
 
-training_data = datasets.FashionMNIST(
-    root="data",
-    train=True,
-    download=True,
-    transform=ToTensor()
-)
-
-test_data = datasets.FashionMNIST(
-    root="data",
-    train=False,
-    download=True,
-    transform=ToTensor()
-)
-
-
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
@@ -30,16 +15,29 @@ class NeuralNetwork(nn.Module):
         self.conv1_out = 4
         self.conv2_out = 4
         self.kernel_size = 5
-        self.max_pool_kernel_size = 2
+        self.pool_kernel_size = 2
         self.fc1_out = 64
         self.fc2_out = 10
 
+        # expected height & width
+        self.input_height = 28
+        self.input_width = 28
+
+        # calculating input of first fc layer
+        self.flatten_conv1_out, self.conv1_outputW, self.conv1_outputH = get_conv_output_size(self.conv1_out, self.input_width, self.input_height, self.kernel_size)
+        self.flatten_pool1_out, self.pool1_outputW, self.pool1_outputH = get_max_pool_output_size(self.conv1_out, self.conv1_outputW, self.conv1_outputH, self.pool_kernel_size)
+        self.flatten_conv2_out, self.conv2_outputW, self.conv2_outputH = get_conv_output_size(self.conv2_out,  self.pool1_outputW, self.pool1_outputH, self.kernel_size)
+        self.flatten_pool2_out, self.pool2_outputW, self.pool2_outputH = get_max_pool_output_size(self.conv2_out,  self.conv2_outputW, self.conv2_outputH, self.pool_kernel_size)
+
         self.conv1 = nn.Conv2d(self.in_channels, self.conv1_out, self.kernel_size)
-        self.pool = nn.MaxPool2d((self.max_pool_kernel_size, self.max_pool_kernel_size))
+        self.relu1 = nn.ReLU()
+        self.pool1 = nn.MaxPool2d(self.pool_kernel_size)
         self.conv2 = nn.Conv2d(self.conv1_out, self.conv2_out, self.kernel_size)
+        self.relu2 = nn.ReLU()
+        self.pool2 = nn.MaxPool2d(self.pool_kernel_size)
         self.flatten = nn.Flatten()
-        self.fc1 = nn.Linear(4*4*self.conv2_out, self.fc1_out)
-        self.relu = nn.ReLU()
+        self.fc1 = nn.Linear(self.flatten_pool2_out, self.fc1_out)
+        self.relu3 = nn.ReLU()
         self.fc2 = nn.Linear(self.fc1_out, self.fc2_out)
 
     @property
@@ -47,48 +45,33 @@ class NeuralNetwork(nn.Module):
         return f'conv1:{self.conv1_out};conv2:{self.conv2_out};fc:{self.fc1_out};kernel:{self.kernel_size}'
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
+        x = self.conv1(x)
+        x = self.relu1(x)
+        x = self.pool1(x)
+
+        x = self.conv2(x)
+        x = self.relu2(x)
+        x = self.pool2(x)
+
         x = self.flatten(x)
         x = self.fc1(x)
-        x = self.relu(x)
+        x = self.relu3(x)
         logits = self.fc2(x)
         return logits
 
+    @property
     def layers(self):
-        input_width = 28
-        input_height = 28
-
-        conv1_out, conv1_outputW, conv1_outputH = get_conv_output_size(self.conv1_out, input_width, input_height, self.kernel_size)
-        pool1_out, pool1_outputW, pool1_outputH = get_max_pool_output_size(self.conv1_out, conv1_outputW, conv1_outputH, self.max_pool_kernel_size)
-        conv2_out, conv2_outputW, conv2_outputH = get_conv_output_size(self.conv2_out,  pool1_outputW, pool1_outputH, self.kernel_size)
-        pool2_out, pool2_outputW, pool2_outputH = get_max_pool_output_size(self.conv2_out,  conv2_outputW, conv2_outputH, self.max_pool_kernel_size)
-
-        # print(conv1_out, conv1_outputW, conv1_outputH)
-        # print(pool1_out, pool1_outputW, pool1_outputH)
-        # print(conv2_out, conv2_outputW, conv2_outputH)
-        # print(pool2_out, pool2_outputW, pool2_outputH)
-
         return (
-            ('conv', {'in_channels': self.in_channels, 'out_channels': self.conv1_out, 'kernel': self.kernel_size, 'input_width': input_width, 'input_height': input_height, 'output_len': conv1_out}),
+            ('conv', {'in_channels': self.in_channels, 'out_channels': self.conv1_out, 'kernel': self.kernel_size, 'input_width': self.input_width, 'input_height': self.input_height, 'output_len': self.flatten_conv1_out}),
             ('relu', {}),
-            ('max_pool', {'in_channels': self.conv1_out, 'kernel': self.max_pool_kernel_size, 'input_width': conv1_outputW, 'input_height': conv1_outputH, 'output_len': pool1_out}),
-            ('conv', {'in_channels': self.conv1_out, 'out_channels': self.conv2_out, 'kernel': self.kernel_size, 'input_width': pool1_outputW, 'input_height': pool1_outputH, 'output_len': conv2_out}),
+            ('max_pool', {'in_channels': self.conv1_out, 'kernel': self.pool_kernel_size, 'input_width': self.conv1_outputW, 'input_height': self.conv1_outputH, 'output_len': self.flatten_pool1_out}),
+            ('conv', {'in_channels': self.conv1_out, 'out_channels': self.conv2_out, 'kernel': self.kernel_size, 'input_width': self.pool1_outputW, 'input_height': self.pool1_outputH, 'output_len': self.flatten_conv2_out}),
             ('relu', {}),
-            ('max_pool', {'in_channels': self.conv2_out, 'kernel': self.max_pool_kernel_size, 'input_width': conv2_outputW, 'input_height': conv2_outputH, 'output_len': pool2_out}),
-            ('fc', {'input_len': self.conv2_out*pool2_outputW*pool2_outputH, 'output_len': self.fc1_out}),
+            ('max_pool', {'in_channels': self.conv2_out, 'kernel': self.pool_kernel_size, 'input_width': self.conv2_outputW, 'input_height': self.conv2_outputH, 'output_len': self.flatten_pool2_out}),
+            ('fc', {'input_len': self.flatten_pool2_out, 'output_len': self.fc1_out}),
             ('relu', {}),
             ('fc', {'input_len': self.fc1_out, 'output_len': self.fc2_out})
         )
-
-
-model = NeuralNetwork()
-learning_rate = 0.015421670225292113
-epochs = 5
-batch_size = 8
-
-train_dataloader = DataLoader(training_data, batch_size=batch_size)
-test_dataloader = DataLoader(test_data, batch_size=batch_size)
 
 
 def train_loop(dataloader, model, loss_fn, optimizer):
@@ -134,11 +117,31 @@ def test_loop(dataloader, model, loss_fn):
 
 
 if __name__ == "__main__":
+    model = NeuralNetwork()
+    learning_rate = 0.015421670225292113
+    epochs = 5
+    batch_size = 8
+
+    training_data = datasets.FashionMNIST(
+        root="data",
+        train=True,
+        download=True,
+        transform=ToTensor()
+    )
+
+    test_data = datasets.FashionMNIST(
+        root="data",
+        train=False,
+        download=True,
+        transform=ToTensor()
+    )
+
+    train_dataloader = DataLoader(training_data, batch_size=batch_size)
+    test_dataloader = DataLoader(test_data, batch_size=batch_size)
+
     train = False
     save_onnx = False
     parse_to_c = False
-
-    print(model)
 
     if train:
         loss_fn = nn.CrossEntropyLoss()
@@ -166,15 +169,15 @@ if __name__ == "__main__":
     if parse_to_c:
         from utils.c_parser import CParser
         c_parser = CParser()
-        model_c_str = c_parser.from_model(model)
+        model_c_str = c_parser.model(model)
 
         torch_input = torch.randn(1, 1, 28, 28)
-        model_c_str = c_parser.to_array('input', torch_input) + model_c_str
+        model_c_str = c_parser.tensor_to_array('input', torch_input) + model_c_str
 
         output = model(torch_input)
 
+        model_c_str += '\n' + c_parser.output_testing(c_parser.flatten(output).size(dim=0), output)
         print(model_c_str)
-        print(c_parser.to_array('expectedOutput', output))
 
     if save_onnx:
         torch_input = torch.randn(1, 1, 28, 28)

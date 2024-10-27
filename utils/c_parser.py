@@ -7,7 +7,7 @@ class CParser:
     def __init__(self):
         self.flatten = nn.Flatten(start_dim=0)
 
-    def to_array(self, name: str, tensor: torch.Tensor):
+    def tensor_to_array(self, name: str, tensor: torch.Tensor):
         tensor = self.flatten(tensor)
         if tensor.dtype == torch.float:
             data_type = 'float'
@@ -18,54 +18,51 @@ class CParser:
         c_array = f'{data_type} {name}[] = {{'
 
         c_array += ', '.join(map(lambda t: str(t.item()), tensor))
-        # for value in tensor:
-        #     c_array += str(value.item()) + ', '
 
         c_array += '};'
         return c_array
 
-    def from_dict_to_variables(self, variables_dict: dict):
+    def dict_to_variables(self, variables_dict: dict):
         c_str = ''
         for key, value in variables_dict.items():
             data_type, data_value = value
             c_str += f'{data_type} {key} = {data_value};\n'
         return c_str
 
-    def conv_testing(self, output_size: int):
-        return f'float output[{output_size}];' + \
-               '\nCNN_ConvLayerForward(inputChannels, inputWidth, inputHeight, outputChannels, kernelWidth, kernelHeight, stride, padding, input, weights, biases, output);' + \
-               f'\nfor (size_t i=0;i<{output_size};++i){{' + \
-               '\n    printf("Output: %f\\n", output[i]);' + \
-               '\n}'
-
-    def fc_testing(self):
-        return """float output[outputLen];
-CNN_FcLayerForward(inputLen, outputLen, input, weights, biases, output);
-
-for (size_t i=0;i<outputLen;++i){
-    printf("Output: %f\\n", output[i]);
-}"""
-
-    def max_pool_testing(self, output_size: int):
-        return f"""float output[{output_size}];
-CNN_MaxPoolForwardDefault(inputChannels, inputWidth, inputHeight, kernel, input, output);
-for (size_t i=0;i<{output_size};++i){{
-    printf("Output: %f\\n", output[i]);
+    def output_testing(self, output_len: int, expected_output: torch.Tensor):
+        c_str = self.tensor_to_array('expectedOutput', expected_output)
+        c_str += f"""
+for (size_t i=0;i<{output_len};++i){{
+    printf("Output [%d]: %f\\n", i, output[i]);
+    assert(equalFloatDefault(output[i], expectedOutput[i]));
 }}"""
+        return c_str
 
-    def from_model(self, model):
+    def conv(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_ConvLayerForward(inputChannels, inputWidth, inputHeight, outputChannels, kernelWidth, kernelHeight, stride, padding, input, weights, biases, output);"""
+
+    def fc(self):
+        return """float output[outputLen];
+CNN_FcLayerForward(inputLen, outputLen, input, weights, biases, output);"""
+
+    def max_pool_default(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_MaxPoolForwardDefault(inputChannels, inputWidth, inputHeight, kernel, input, output);"""
+
+    def model(self, model: torch.nn.Module):
         model_c_str = ''
         i, j = 0, 0
         for key, value in model.state_dict().items():
             name = key.split('.')[-1] + str(j)
-            model_c_str += self.to_array(name, value) + '\n'
+            model_c_str += self.tensor_to_array(name, value) + '\n'
             if i % 2 != 0:
                 j += 1
             i += 1
 
         i, j = 0, 0
         last_output = 0
-        for name, values in model.layers():
+        for name, values in model.layers:
             # print(name)
             # print(values)
             if i == 0:

@@ -3,6 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 
 from c_parser import CParser
+from nn_utils import get_conv_output_size, get_max_pool_output_size
 
 
 c_parser = CParser()
@@ -12,24 +13,22 @@ def fc(in_tensor: torch.Tensor, input_len: int, output_len: int):
     input_params_dict = {
         'inputLen': ('size_t', input_len),
         'outputLen': ('size_t', output_len),
-
     }
     fc = nn.Linear(input_len, output_len)
     params = fc.state_dict()
     out_tensor = fc(in_tensor)
 
-    variables = c_parser.from_dict_to_variables(input_params_dict)
-    in_array = c_parser.to_array('input', in_tensor)
-    weights_array = c_parser.to_array('weights', params['weight'])
-    biases_array = c_parser.to_array('biases', params['bias'])
-    out_array = c_parser.to_array('expectedOutput', out_tensor)
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_array('input', in_tensor)
+    weights_array = c_parser.tensor_to_array('weights', params['weight'])
+    biases_array = c_parser.tensor_to_array('biases', params['bias'])
 
     print(variables)
     print(in_array)
     print(weights_array)
     print(biases_array)
-    print(out_array)
-    print(c_parser.fc_testing())
+    print(c_parser.fc())
+    print(c_parser.output_testing(output_len, out_tensor))
     print('\n\n')
 
 
@@ -49,25 +48,25 @@ def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_wid
         'padding': ('int', padding),
     }
 
-    variables = c_parser.from_dict_to_variables(input_params_dict)
-    in_array = c_parser.to_array('input', in_tensor)
-    weights_array = c_parser.to_array('weights', params['weight'])
-    biases_array = c_parser.to_array('biases', params['bias'])
-    out_array = c_parser.to_array('expectedOutput', out_tensor)
-    output_size = ((input_width + 2 * padding - kernel_width)/stride + 1) * ((input_height + 2 * padding - kernel_height)/stride + 1) * out_channels
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_array('input', in_tensor)
+    weights_array = c_parser.tensor_to_array('weights', params['weight'])
+    biases_array = c_parser.tensor_to_array('biases', params['bias'])
+    # output_size = ((input_width + 2 * padding - kernel_width)/stride + 1) * ((input_height + 2 * padding - kernel_height)/stride + 1) * out_channels
+    # output_size = int(output_size)
+    output_size, _, _ = get_conv_output_size(out_channels, input_width, input_height, kernel_height, stride, padding)
 
     print(variables)
     print(in_array)
     print(weights_array)
     print(biases_array)
-    print(out_array)
-    print(c_parser.conv_testing(int(output_size)))
+    print(c_parser.conv(output_size))
+    print(c_parser.output_testing(output_size, out_tensor))
     print('\n\n')
 
 
 def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_width: int, input_height: int, kernel: int):
     pool = nn.MaxPool2d(kernel, kernel)
-    params = pool.state_dict()
     out_tensor = pool(in_tensor)
 
     input_params_dict = {
@@ -77,15 +76,16 @@ def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_width: int
         'kernel': ('size_t', kernel),
     }
 
-    variables = c_parser.from_dict_to_variables(input_params_dict)
-    in_array = c_parser.to_array('input', in_tensor)
-    out_array = c_parser.to_array('expectedOutput', out_tensor)
-    output_size = ((input_width + - kernel)/kernel + 1) * ((input_height - kernel)/kernel + 1) * in_channels
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_array('input', in_tensor)
+    # output_size = ((input_width + - kernel)/kernel + 1) * ((input_height - kernel)/kernel + 1) * in_channels
+    # output_size = int(output_size)
+    output_size, _, _ = get_max_pool_output_size(in_channels, input_width, input_height, kernel)
 
     print(variables)
     print(in_array)
-    print(out_array)
-    print(c_parser.max_pool_testing(int(output_size)))
+    print(c_parser.max_pool_default(output_size))
+    print(c_parser.output_testing(output_size, out_tensor))
     print('\n\n')
 
 
