@@ -1,9 +1,10 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
+from typing import Union
 
 from c_parser import CParser
-from nn_utils import get_conv_output_size, get_max_pool_output_size
+from nn_utils import get_conv_output_size, get_max_pool_output_size, params_to_tuple
 
 
 c_parser = CParser()
@@ -32,17 +33,17 @@ def fc(in_tensor: torch.Tensor, input_len: int, output_len: int):
     print('\n\n')
 
 
-def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_width: int, input_height: int, kernel_width: int, kernel_height: int, stride: int, padding: int):
+def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_height: int, input_width: int, kernel_height: int, kernel_width: int, stride: int = 1, padding: int = 0):
     conv = nn.Conv2d(in_channels, out_channels, kernel_size=(kernel_height, kernel_width), stride=stride, padding=padding)
     params = conv.state_dict()
     out_tensor = conv(in_tensor)
 
     input_params_dict = {
         'inputChannels': ('size_t', in_channels),
-        'inputWidth': ('size_t', input_width),
         'inputHeight': ('size_t', input_height),
-        'kernelWidth': ('size_t', kernel_width),
+        'inputWidth': ('size_t', input_width),
         'kernelHeight': ('size_t', kernel_height),
+        'kernelWidth': ('size_t', kernel_width),
         'outputChannels': ('size_t', out_channels),
         'stride': ('int', stride),
         'padding': ('int', padding),
@@ -52,9 +53,7 @@ def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_wid
     in_array = c_parser.tensor_to_array('input', in_tensor)
     weights_array = c_parser.tensor_to_array('weights', params['weight'])
     biases_array = c_parser.tensor_to_array('biases', params['bias'])
-    # output_size = ((input_width + 2 * padding - kernel_width)/stride + 1) * ((input_height + 2 * padding - kernel_height)/stride + 1) * out_channels
-    # output_size = int(output_size)
-    output_size, _, _ = get_conv_output_size(out_channels, input_width, input_height, kernel_height, stride, padding)
+    output_size, _, _ = get_conv_output_size(out_channels, input_height, input_width, (kernel_height, kernel_width), stride, padding)
 
     print(variables)
     print(in_array)
@@ -65,7 +64,7 @@ def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_wid
     print('\n\n')
 
 
-def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_width: int, input_height: int, kernel: int):
+def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int, kernel: int):
     pool = nn.MaxPool2d(kernel, kernel)
     out_tensor = pool(in_tensor)
 
@@ -78,13 +77,36 @@ def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_width: int
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_array('input', in_tensor)
-    # output_size = ((input_width + - kernel)/kernel + 1) * ((input_height - kernel)/kernel + 1) * in_channels
-    # output_size = int(output_size)
-    output_size, _, _ = get_max_pool_output_size(in_channels, input_width, input_height, kernel)
+    output_size, _, _ = get_max_pool_output_size(in_channels, input_height, input_width, kernel)
 
     print(variables)
     print(in_array)
     print(c_parser.max_pool_default(output_size))
+    print(c_parser.output_testing(output_size, out_tensor))
+    print('\n\n')
+
+
+def max_pool(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int, kernel_height: int, kernel_width: int, stride: int, padding: int = 0):
+    pool = nn.MaxPool2d(kernel_size=(kernel_height, kernel_width), stride=stride, padding=padding)
+    out_tensor = pool(in_tensor)
+
+    input_params_dict = {
+        'inputChannels': ('size_t', in_channels),
+        'inputHeight': ('size_t', input_height),
+        'inputWidth': ('size_t', input_width),
+        'kernelHeight': ('size_t', kernel_height),
+        'kernelWidth': ('size_t', kernel_width),
+        'stride': ('int', stride),
+        'padding': ('int', padding),
+    }
+
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_array('input', in_tensor)
+    output_size, _, _ = get_max_pool_output_size(in_channels, input_height, input_width, (kernel_height, kernel_width), stride, padding)
+
+    print(variables)
+    print(in_array)
+    print(c_parser.max_pool(output_size))
     print(c_parser.output_testing(output_size, out_tensor))
     print('\n\n')
 
@@ -94,26 +116,33 @@ if __name__ == '__main__':
     # fc(in_tensor, 12, 8)
 
     # in_tensor = torch.tensor([[[1, 2], [1, 2]]], dtype=torch.float)
-    # conv(in_tensor, 1, 2, 2, 2, 2, 2, 1, 0)
+    # conv(in_tensor, 1, 2, 2, 2, 2, 2)
     # in_tensor = torch.tensor([[[[1, 2], [1, 2]], [[1, 2], [1, 2]], [[1, 2], [1, 2]]]], dtype=torch.float)
-    # conv(in_tensor, 3, 2, 2, 2, 2, 2, 1, 0)
-    # conv(in_tensor, 3, 2, 2, 2, 2, 1, 1, 0)
+    # conv(in_tensor, 3, 2, 2, 2, 2, 2)
 
     # in_tensor = torch.tensor([[[[1, 2], [1, 2]], [[1, 2], [1, 2]], [[1, 2], [1, 2]]]], dtype=torch.float)
-    # conv(in_tensor, 3, 2, 2, 2, 2, 1, 1, 0)
-    # max_pool_default(in_tensor, 3, 2, 2, 2)
+    # conv(in_tensor, in_channels=3, out_channels=2, input_height=2, input_width=2, kernel_height=2, kernel_width=1)
+    # max_pool_default(in_tensor, in_channels=3, input_height=2, input_width=2, kernel=2)
 
     # in_tensor = torch.tensor([[
     #     [[1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8]],
     #     [[1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8]],
     #     [[1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8]]
     # ]], dtype=torch.float)
-    # max_pool_default(in_tensor, 3, 8, 8, 2)
+    # max_pool_default(in_tensor, in_channels=3, input_height=8, input_width=8, kernel=2)
 
     # in_tensor = torch.tensor([[
     #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]],
     #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]],
     #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
     # ]], dtype=torch.float)
-    # max_pool_default(in_tensor, 3, 4, 4, 2)
+    # max_pool_default(in_tensor, in_channels=3, input_height=4, input_width=4, kernel=2)
+
+    # in_tensor = torch.tensor([[[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]], dtype=torch.float)
+    # conv(in_tensor, in_channels=1, out_channels=2, input_height=2,input_width= 6, kernel_height=2, kernel_width=2, stride=2)
+    # max_pool(in_tensor, in_channels=1, input_height=2, input_width= 6, kernel_height=2, kernel_width=4, stride=2)
+
+    # in_tensor = torch.tensor([[[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]], dtype=torch.float)
+    # conv(in_tensor, in_channels=1, out_channels=2, input_height=2,input_width= 6, kernel_height=2, kernel_width=2, stride=2, padding=1)
+    # max_pool(in_tensor, in_channels=1, input_height=2, input_width=6, kernel_height=2, kernel_width=4, stride=2, padding=1)
     pass

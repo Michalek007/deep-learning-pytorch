@@ -1,6 +1,9 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
+from typing import Union, Tuple
+
+from nn_utils import get_conv_output_size, get_max_pool_output_size
 
 
 class CParser:
@@ -40,7 +43,11 @@ for (size_t i=0;i<{output_len};++i){{
 
     def conv(self, output_len: int):
         return f"""float output[{output_len}];
-CNN_ConvLayerForward(inputChannels, inputWidth, inputHeight, outputChannels, kernelWidth, kernelHeight, stride, padding, input, weights, biases, output);"""
+CNN_ConvLayerForward(inputChannels, inputHeight, inputWidth, outputChannels, kernelHeight, kernelWidth, stride, padding, input, weights, biases, output);"""
+
+    def conv_default(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_ConvLayerForwardDefault(inputChannels, inputHeight, inputWidth, outputChannels, kernel, input, weights, biases, output);"""
 
     def fc(self):
         return """float output[outputLen];
@@ -48,9 +55,13 @@ CNN_FcLayerForward(inputLen, outputLen, input, weights, biases, output);"""
 
     def max_pool_default(self, output_len: int):
         return f"""float output[{output_len}];
-CNN_MaxPoolForwardDefault(inputChannels, inputWidth, inputHeight, kernel, input, output);"""
+CNN_MaxPoolForwardDefault(inputChannels, inputHeight, inputWidth, kernel, input, output);"""
 
-    def model(self, model: torch.nn.Module):
+    def max_pool(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_MaxPoolForward(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, stride, padding, input, output);"""
+
+    def model(self, model: torch.nn.Module, from_layers_property: bool = True):
         model_c_str = ''
         i, j = 0, 0
         for key, value in model.state_dict().items():
@@ -62,6 +73,39 @@ CNN_MaxPoolForwardDefault(inputChannels, inputWidth, inputHeight, kernel, input,
 
         i, j = 0, 0
         last_output = 0
+
+        if not from_layers_property:
+            def get_value(param: Union[int, tuple]):
+                if isinstance(param, int):
+                    return param
+                if param[0] == param[1]:
+                    return param[0]
+                return None
+
+            for i, layer in enumerate(model.modules()):
+                if i == 0:
+                    continue
+                name = layer.__class__.__name__
+                print()
+                print(name)
+                if name == 'Conv2d':
+                    kernel_size = get_value(layer.kernel_size)
+                    stride = get_value(layer.stride)
+                    padding = get_value(layer.padding)
+
+                    print(layer.in_channels)
+                    print(layer.out_channels)
+                elif name == 'MaxPool2d':
+                    kernel_size = get_value(layer.kernel_size)
+                    stride = get_value(layer.stride)
+                    padding = get_value(layer.padding)
+
+                elif name == 'ReLU':
+                    pass
+                elif name == 'Linear':
+                    print(layer.in_features)
+                    print(layer.out_features)
+
         for name, values in model.layers:
             # print(name)
             # print(values)
@@ -72,11 +116,11 @@ CNN_MaxPoolForwardDefault(inputChannels, inputWidth, inputHeight, kernel, input,
 
             if name == 'conv':
                 layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
-                            f'CNN_ConvLayerForwardDefault({values["in_channels"]}, {values["input_width"]}, {values["input_height"]}, {values["out_channels"]}, {values["kernel"]}, {output_array_name}, weight{j}, bias{j}, output{i+1});\n'
+                            f'CNN_ConvLayerForwardDefault({values["in_channels"]}, {values["input_height"]}, {values["input_width"]}, {values["out_channels"]}, {values["kernel"]}, {output_array_name}, weight{j}, bias{j}, output{i+1});\n'
                 j += 1
             elif name == 'max_pool':
                 layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
-                            f'CNN_MaxPoolForwardDefault({values["in_channels"]}, {values["input_width"]}, {values["input_height"]}, {values["kernel"]}, output{i}, output{i+1});\n'
+                            f'CNN_MaxPoolForwardDefault({values["in_channels"]}, {values["input_height"]}, {values["input_width"]}, {values["kernel"]}, output{i}, output{i+1});\n'
             elif name == 'fc':
                 layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
                             f'CNN_FcLayerForward({values["input_len"]}, {values["output_len"]}, output{i}, weight{j}, bias{j}, output{i+1});\n'

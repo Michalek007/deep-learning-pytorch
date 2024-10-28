@@ -24,10 +24,10 @@ class NeuralNetwork(nn.Module):
         self.input_width = 28
 
         # calculating input of first fc layer
-        self.flatten_conv1_out, self.conv1_outputW, self.conv1_outputH = get_conv_output_size(self.conv1_out, self.input_width, self.input_height, self.kernel_size)
-        self.flatten_pool1_out, self.pool1_outputW, self.pool1_outputH = get_max_pool_output_size(self.conv1_out, self.conv1_outputW, self.conv1_outputH, self.pool_kernel_size)
-        self.flatten_conv2_out, self.conv2_outputW, self.conv2_outputH = get_conv_output_size(self.conv2_out,  self.pool1_outputW, self.pool1_outputH, self.kernel_size)
-        self.flatten_pool2_out, self.pool2_outputW, self.pool2_outputH = get_max_pool_output_size(self.conv2_out,  self.conv2_outputW, self.conv2_outputH, self.pool_kernel_size)
+        self.flatten_conv1_out, self.conv1_outputH, self.conv1_outputW = get_conv_output_size(self.conv1_out, self.input_height, self.input_width, self.kernel_size)
+        self.flatten_pool1_out, self.pool1_outputH, self.pool1_outputW = get_max_pool_output_size(self.conv1_out, self.conv1_outputH, self.conv1_outputW, self.pool_kernel_size)
+        self.flatten_conv2_out, self.conv2_outputH, self.conv2_outputW = get_conv_output_size(self.conv2_out,  self.pool1_outputH, self.pool1_outputW, self.kernel_size)
+        self.flatten_pool2_out, self.pool2_outputH, self.pool2_outputW = get_max_pool_output_size(self.conv2_out,  self.conv2_outputH, self.conv2_outputW, self.pool_kernel_size)
 
         self.conv1 = nn.Conv2d(self.in_channels, self.conv1_out, self.kernel_size)
         self.relu1 = nn.ReLU()
@@ -139,9 +139,11 @@ if __name__ == "__main__":
     train_dataloader = DataLoader(training_data, batch_size=batch_size)
     test_dataloader = DataLoader(test_data, batch_size=batch_size)
 
+    print(model)
+
     train = False
     save_onnx = False
-    parse_to_c = False
+    parse_to_c = True
 
     if train:
         loss_fn = nn.CrossEntropyLoss()
