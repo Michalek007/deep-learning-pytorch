@@ -41,6 +41,10 @@ for (size_t i=0;i<{output_len};++i){{
 }}"""
         return c_str
 
+    def conv_(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_ConvLayerForward_(inputChannels, inputHeight, inputWidth, outputChannels, kernelHeight, kernelWidth, strideH, strideW, paddingH, paddingW, input, weights, biases, output);"""
+
     def conv(self, output_len: int):
         return f"""float output[{output_len}];
 CNN_ConvLayerForward(inputChannels, inputHeight, inputWidth, outputChannels, kernelHeight, kernelWidth, stride, padding, input, weights, biases, output);"""
@@ -60,6 +64,10 @@ CNN_MaxPoolForwardDefault(inputChannels, inputHeight, inputWidth, kernel, input,
     def max_pool(self, output_len: int):
         return f"""float output[{output_len}];
 CNN_MaxPoolForward(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, stride, padding, input, output);"""
+
+    def max_pool_(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_MaxPoolForward_(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, strideH, strideW, paddingH, paddingW, input, output);"""
 
     def model(self, model: torch.nn.Module, from_layers_property: bool = True):
         model_c_str = ''
