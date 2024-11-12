@@ -173,6 +173,30 @@ def max_pool_(in_tensor: torch.Tensor, in_channels: int, input_height: int, inpu
     print('\n\n')
 
 
+def prelu(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int):
+    input_params_dict = {
+        'inputChannels': ('size_t', in_channels),
+        'inputHeight': ('size_t', input_height),
+        'inputWidth': ('size_t', input_width),
+    }
+    output_len = in_channels * input_height * input_width
+    prelu = nn.PReLU(in_channels)
+    params = prelu.state_dict()
+    out_tensor = prelu(in_tensor)
+    print(out_tensor)
+
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_const_array('input', in_tensor)
+    weights_array = c_parser.tensor_to_const_array('weights', params['weight'])
+
+    print(variables)
+    print(in_array)
+    print(weights_array)
+    print(c_parser.prelu(output_len))
+    print(c_parser.output_testing(output_len, out_tensor))
+    print('\n\n')
+
+
 if __name__ == '__main__':
     # in_tensor = torch.tensor([1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2], dtype=torch.float)
     # fc(in_tensor, 12, 8)
@@ -215,4 +239,9 @@ if __name__ == '__main__':
     # in_tensor = torch.tensor([[[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]]], dtype=torch.float)
     # conv_(in_tensor, in_channels=1, out_channels=2, input_height=2, input_width=6, kernel_size=2, stride=2, padding=(0, 1))
     # max_pool_(in_tensor, in_channels=1, input_height=2, input_width=6, kernel_size=2, stride=2, padding=(0, 1))
+
+    # in_tensor = torch.tensor([
+    #     [[1, 2, 3, -4, -5, -6], [-1, -2, -3, 4, 5, 6]],
+    #     [[0, 0, 0, 4, 5, 6], [1, 2, 3, -4, -5, -6]]], dtype=torch.float)
+    # prelu(in_tensor, 2, 2, 6)
     pass

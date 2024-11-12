@@ -25,6 +25,9 @@ class CParser:
         c_array += '};'
         return c_array
 
+    def tensor_to_const_array(self, name: str, tensor: torch.Tensor):
+        return f'const {self.tensor_to_array(name, tensor)}'
+
     def dict_to_variables(self, variables_dict: dict):
         c_str = ''
         for key, value in variables_dict.items():
@@ -68,6 +71,10 @@ CNN_MaxPoolForward(inputChannels, inputHeight, inputWidth, kernelHeight, kernelW
     def max_pool_(self, output_len: int):
         return f"""float output[{output_len}];
 CNN_MaxPoolForward_(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, strideH, strideW, paddingH, paddingW, input, output);"""
+
+    def prelu(self, output_len: int):
+            return f"""float output[{output_len}];
+CNN_PReLU(inputChannels, inputHeight, inputWidth, input, weights, output);"""
 
     def model(self, model: torch.nn.Module, from_layers_property: bool = True):
         model_c_str = ''
