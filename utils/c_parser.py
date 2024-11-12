@@ -132,9 +132,10 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                 padding_h, padding_w = get_value(layer.padding)
                 output_len, output_size = get_max_pool_output_size(output_channels, input_size, layer.kernel_size, layer.stride, layer.padding)
                 layer_str = f'float output{i}[{output_len}];\n' + \
-                            f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[0]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {input_array_name}, output{i});\n'
+                            f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[1]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {input_array_name}, output{i});\n'
             elif name == 'Linear':
                 output_len = layer.out_features
+                output_size = None
                 layer_str = f'float output{i}[{output_len}];\n' + \
                             f'CNN_FcLayerForward({layer.in_features}, {output_len}, {input_array_name}, weight{j}, bias{k}, output{i});\n'
                 j += 1
@@ -147,8 +148,12 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                             f'CNN_PReLU({output_channels}, {input_size}, {input_array_name}, weight{j}, output{i});\n'
                 j += 1
             elif name == 'Softmax':
-                layer_str = f'float output{i}[{output_len}];\n' + \
-                            f'CNN_Softmax({output_len}, {input_array_name}, output{i});\n'
+                if not input_size:
+                    layer_str = f'float output{i}[{output_len}];\n' + \
+                                f'CNN_Softmax({output_len}, {input_array_name}, output{i});\n'
+                else:
+                    layer_str = f'float output{i}[{output_len}];\n' + \
+                                f'CNN_Softmax2D({output_channels}, {input_size[0]}, {input_size[1]}, {layer.dim-1}, {input_array_name}, output{i});\n'
             elif name == 'Flatten':
                 layer_str = ''
                 i -= 1

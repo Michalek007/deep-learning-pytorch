@@ -219,11 +219,12 @@ def softmax2d(in_tensor: torch.Tensor, in_channels: int, input_height: int, inpu
         'inputChannels': ('size_t', in_channels),
         'inputHeight': ('size_t', input_height),
         'inputWidth': ('size_t', input_width),
-        'dim': ('size_t', dim),
+        'dim': ('size_t', dim-1),
     }
     output_len = in_channels * input_height * input_width
     softmax = nn.Softmax(dim=dim)
     out_tensor = softmax(in_tensor)
+    print(out_tensor)
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_const_array('input', in_tensor)
@@ -287,4 +288,11 @@ if __name__ == '__main__':
 
     # in_tensor = torch.tensor([[1, 2, 3, -4, -5, -6, -1, -2, -3, 4, 5, 6]], dtype=torch.float)
     # softmax(in_tensor, in_tensor.size(1))
+
+    # in_tensor = torch.tensor([[
+    #     [[2, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]],
+    #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]],
+    #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
+    # ]], dtype=torch.float)
+    # softmax2d(in_tensor, 3, 4, 4, dim=1)
     pass
