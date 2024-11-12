@@ -3,7 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 from typing import Union, Tuple
 
-from nn_utils import get_conv_output_size, get_max_pool_output_size
+from utils.nn_utils import get_conv_output_size, get_max_pool_output_size
 
 
 class CParser:
@@ -76,80 +76,82 @@ CNN_MaxPoolForward_(inputChannels, inputHeight, inputWidth, kernelHeight, kernel
             return f"""float output[{output_len}];
 CNN_PReLU(inputChannels, inputHeight, inputWidth, input, weights, output);"""
 
-    def model(self, model: torch.nn.Module, from_layers_property: bool = True):
+    def softmax(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_Softmax(inputLen, input, output);"""
+
+    def softmax2d(self, output_len: int):
+        return f"""float output[{output_len}];
+CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
+
+    def model(self, model: torch.nn.Module, input_size: tuple):
         model_c_str = ''
         i, j = 0, 0
         for key, value in model.state_dict().items():
             name = key.split('.')[-1] + str(j)
-            model_c_str += self.tensor_to_array(name, value) + '\n'
+            model_c_str += self.tensor_to_const_array(name, value) + '\n'
             if i % 2 != 0:
                 j += 1
             i += 1
 
-        i, j = 0, 0
-        last_output = 0
+        i, j, k = 0, 0, 0
 
-        if not from_layers_property:
-            def get_value(param: Union[int, tuple]):
-                if isinstance(param, int):
-                    return param
-                if param[0] == param[1]:
-                    return param[0]
-                return None
+        def get_value(param: Union[int, tuple]):
+            if isinstance(param, int):
+                return param, param
+            return param
 
-            for i, layer in enumerate(model.modules()):
-                if i == 0:
-                    continue
-                name = layer.__class__.__name__
-                print()
-                print(name)
-                if name == 'Conv2d':
-                    kernel_size = get_value(layer.kernel_size)
-                    stride = get_value(layer.stride)
-                    padding = get_value(layer.padding)
-
-                    print(layer.in_channels)
-                    print(layer.out_channels)
-                elif name == 'MaxPool2d':
-                    kernel_size = get_value(layer.kernel_size)
-                    stride = get_value(layer.stride)
-                    padding = get_value(layer.padding)
-
-                elif name == 'ReLU':
-                    pass
-                elif name == 'Linear':
-                    print(layer.in_features)
-                    print(layer.out_features)
-
-        for name, values in model.layers:
-            # print(name)
-            # print(values)
+        layer_str = ''
+        output_channels = 3
+        output_size = input_size
+        output_len = output_channels * output_size[0] * output_size[1]
+        for _, layer in enumerate(model.modules()):
             if i == 0:
-                output_array_name = 'input'
+                i += 1
+                continue
+            if i == 1:
+                input_array_name = 'input'
             else:
-                output_array_name = f'output{i}'
+                input_array_name = f'output{i-1}'
+            name = layer.__class__.__name__
+            input_size = output_size
+            if name == 'Conv2d':
+                kernel_h, kernel_w = get_value(layer.kernel_size)
+                stride_h, stride_w = get_value(layer.stride)
+                padding_h, padding_w = get_value(layer.padding)
+                output_len, output_size = get_conv_output_size(layer.out_channels, input_size, layer.kernel_size, layer.stride, layer.padding)
+                output_channels = layer.out_channels
 
-            if name == 'conv':
-                layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
-                            f'CNN_ConvLayerForwardDefault({values["in_channels"]}, {values["input_height"]}, {values["input_width"]}, {values["out_channels"]}, {values["kernel"]}, {output_array_name}, weight{j}, bias{j}, output{i+1});\n'
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_ConvLayerForward_({layer.in_channels}, {input_size[0]}, {input_size[0]}, {output_channels}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {input_array_name}, weight{j}, bias{k}, output{i});\n'
                 j += 1
-            elif name == 'max_pool':
-                layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
-                            f'CNN_MaxPoolForwardDefault({values["in_channels"]}, {values["input_height"]}, {values["input_width"]}, {values["kernel"]}, output{i}, output{i+1});\n'
-            elif name == 'fc':
-                layer_str = f'float output{i+1}[{values["output_len"]}];\n' +\
-                            f'CNN_FcLayerForward({values["input_len"]}, {values["output_len"]}, output{i}, weight{j}, bias{j}, output{i+1});\n'
+                k += 1
+            elif name == 'MaxPool2d':
+                kernel_h, kernel_w = get_value(layer.kernel_size)
+                stride_h, stride_w = get_value(layer.stride)
+                padding_h, padding_w = get_value(layer.padding)
+                output_len, output_size = get_max_pool_output_size(output_channels, input_size, layer.kernel_size, layer.stride, layer.padding)
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[0]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {input_array_name}, output{i});\n'
+            elif name == 'Linear':
+                output_len = layer.out_features
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_FcLayerForward({layer.in_features}, {output_len}, {input_array_name}, weight{j}, bias{k}, output{i});\n'
                 j += 1
-            elif name == 'relu':
-                layer_str = f'float output{i+1}[{last_output}];\n' +\
-                            f'CNN_ReLU({last_output}, output{i}, output{i+1});\n'
-            else:
+                k += 1
+            elif name == 'ReLU':
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_ReLU({output_len}, {input_array_name}, output{i});\n'
+            elif name == 'PReLU':
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_PReLU({output_channels}, {input_size}, {input_array_name}, weight{j}, output{i});\n'
+                j += 1
+            elif name == 'Softmax':
+                layer_str = f'float output{i}[{output_len}];\n' + \
+                            f'CNN_Softmax({output_len}, {input_array_name}, output{i});\n'
+            elif name == 'Flatten':
                 layer_str = ''
-
-            try:
-                last_output = values["output_len"]
-            except KeyError:
-                pass
-            model_c_str += layer_str
+                i -= 1
             i += 1
+            model_c_str += layer_str
         return model_c_str

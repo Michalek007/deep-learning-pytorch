@@ -24,10 +24,10 @@ class NeuralNetwork(nn.Module):
         self.input_width = 28
 
         # calculating input of first fc layer
-        self.flatten_conv1_out, self.conv1_outputH, self.conv1_outputW = get_conv_output_size(self.conv1_out, self.input_height, self.input_width, self.kernel_size)
-        self.flatten_pool1_out, self.pool1_outputH, self.pool1_outputW = get_max_pool_output_size(self.conv1_out, self.conv1_outputH, self.conv1_outputW, self.pool_kernel_size)
-        self.flatten_conv2_out, self.conv2_outputH, self.conv2_outputW = get_conv_output_size(self.conv2_out,  self.pool1_outputH, self.pool1_outputW, self.kernel_size)
-        self.flatten_pool2_out, self.pool2_outputH, self.pool2_outputW = get_max_pool_output_size(self.conv2_out,  self.conv2_outputH, self.conv2_outputW, self.pool_kernel_size)
+        self.flatten_conv1_out, self.conv1_output = get_conv_output_size(self.conv1_out, (self.input_height, self.input_width), self.kernel_size)
+        self.flatten_pool1_out, self.pool1_output = get_max_pool_output_size(self.conv1_out, self.conv1_output, self.pool_kernel_size)
+        self.flatten_conv2_out, self.conv2_output = get_conv_output_size(self.conv2_out,  self.pool1_output, self.kernel_size)
+        self.flatten_pool2_out, self.pool2_output = get_max_pool_output_size(self.conv2_out,  self.conv2_output, self.pool_kernel_size)
 
         self.conv1 = nn.Conv2d(self.in_channels, self.conv1_out, self.kernel_size)
         self.relu1 = nn.ReLU()
@@ -58,20 +58,6 @@ class NeuralNetwork(nn.Module):
         x = self.relu3(x)
         logits = self.fc2(x)
         return logits
-
-    @property
-    def layers(self):
-        return (
-            ('conv', {'in_channels': self.in_channels, 'out_channels': self.conv1_out, 'kernel': self.kernel_size, 'input_width': self.input_width, 'input_height': self.input_height, 'output_len': self.flatten_conv1_out}),
-            ('relu', {}),
-            ('max_pool', {'in_channels': self.conv1_out, 'kernel': self.pool_kernel_size, 'input_width': self.conv1_outputW, 'input_height': self.conv1_outputH, 'output_len': self.flatten_pool1_out}),
-            ('conv', {'in_channels': self.conv1_out, 'out_channels': self.conv2_out, 'kernel': self.kernel_size, 'input_width': self.pool1_outputW, 'input_height': self.pool1_outputH, 'output_len': self.flatten_conv2_out}),
-            ('relu', {}),
-            ('max_pool', {'in_channels': self.conv2_out, 'kernel': self.pool_kernel_size, 'input_width': self.conv2_outputW, 'input_height': self.conv2_outputH, 'output_len': self.flatten_pool2_out}),
-            ('fc', {'input_len': self.flatten_pool2_out, 'output_len': self.fc1_out}),
-            ('relu', {}),
-            ('fc', {'input_len': self.fc1_out, 'output_len': self.fc2_out})
-        )
 
 
 def train_loop(dataloader, model, loss_fn, optimizer):
@@ -171,10 +157,10 @@ if __name__ == "__main__":
     if parse_to_c:
         from utils.c_parser import CParser
         c_parser = CParser()
-        model_c_str = c_parser.model(model)
+        model_c_str = c_parser.model(model, input_size=(28, 28))
 
         torch_input = torch.randn(1, 1, 28, 28)
-        model_c_str = c_parser.tensor_to_array('input', torch_input) + model_c_str
+        model_c_str = c_parser.tensor_to_const_array('input', torch_input) + model_c_str
 
         output = model(torch_input)
 

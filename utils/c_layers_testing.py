@@ -56,7 +56,7 @@ def conv_(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_he
     in_array = c_parser.tensor_to_array('input', in_tensor)
     weights_array = c_parser.tensor_to_array('weights', params['weight'])
     biases_array = c_parser.tensor_to_array('biases', params['bias'])
-    output_size, _, _ = get_conv_output_size(out_channels, input_height, input_width, kernel_size, stride, padding)
+    output_size, _ = get_conv_output_size(out_channels, (input_height, input_width), kernel_size, stride, padding)
 
     print(variables)
     print(in_array)
@@ -87,7 +87,7 @@ def conv(in_tensor: torch.Tensor, in_channels: int, out_channels: int, input_hei
     in_array = c_parser.tensor_to_array('input', in_tensor)
     weights_array = c_parser.tensor_to_array('weights', params['weight'])
     biases_array = c_parser.tensor_to_array('biases', params['bias'])
-    output_size, _, _ = get_conv_output_size(out_channels, input_height, input_width, (kernel_height, kernel_width), stride, padding)
+    output_size, _ = get_conv_output_size(out_channels, (input_height, input_width), (kernel_height, kernel_width), stride, padding)
 
     print(variables)
     print(in_array)
@@ -111,7 +111,7 @@ def max_pool_default(in_tensor: torch.Tensor, in_channels: int, input_height: in
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_array('input', in_tensor)
-    output_size, _, _ = get_max_pool_output_size(in_channels, input_height, input_width, kernel)
+    output_size, _ = get_max_pool_output_size(in_channels, (input_height, input_width), kernel)
 
     print(variables)
     print(in_array)
@@ -136,7 +136,7 @@ def max_pool(in_tensor: torch.Tensor, in_channels: int, input_height: int, input
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_array('input', in_tensor)
-    output_size, _, _ = get_max_pool_output_size(in_channels, input_height, input_width, (kernel_height, kernel_width), stride, padding)
+    output_size, _ = get_max_pool_output_size(in_channels, (input_height, input_width), (kernel_height, kernel_width), stride, padding)
 
     print(variables)
     print(in_array)
@@ -164,7 +164,7 @@ def max_pool_(in_tensor: torch.Tensor, in_channels: int, input_height: int, inpu
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_array('input', in_tensor)
-    output_size, _, _ = get_max_pool_output_size(in_channels, input_height, input_width, kernel_size, stride, padding)
+    output_size, _ = get_max_pool_output_size(in_channels, (input_height, input_width), kernel_size, stride, padding)
 
     print(variables)
     print(in_array)
@@ -193,6 +193,44 @@ def prelu(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_wi
     print(in_array)
     print(weights_array)
     print(c_parser.prelu(output_len))
+    print(c_parser.output_testing(output_len, out_tensor))
+    print('\n\n')
+
+
+def softmax(in_tensor: torch.Tensor, input_len: int):
+    input_params_dict = {
+        'inputLen': ('size_t', input_len)
+    }
+    softmax = nn.Softmax(dim=1)
+    out_tensor = softmax(in_tensor)
+
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_const_array('input', in_tensor)
+
+    print(variables)
+    print(in_array)
+    print(c_parser.softmax(input_len))
+    print(c_parser.output_testing(input_len, out_tensor))
+    print('\n\n')
+
+
+def softmax2d(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int, dim: int):
+    input_params_dict = {
+        'inputChannels': ('size_t', in_channels),
+        'inputHeight': ('size_t', input_height),
+        'inputWidth': ('size_t', input_width),
+        'dim': ('size_t', dim),
+    }
+    output_len = in_channels * input_height * input_width
+    softmax = nn.Softmax(dim=dim)
+    out_tensor = softmax(in_tensor)
+
+    variables = c_parser.dict_to_variables(input_params_dict)
+    in_array = c_parser.tensor_to_const_array('input', in_tensor)
+
+    print(variables)
+    print(in_array)
+    print(c_parser.softmax2d(output_len))
     print(c_parser.output_testing(output_len, out_tensor))
     print('\n\n')
 
@@ -244,4 +282,9 @@ if __name__ == '__main__':
     #     [[1, 2, 3, -4, -5, -6], [-1, -2, -3, 4, 5, 6]],
     #     [[0, 0, 0, 4, 5, 6], [1, 2, 3, -4, -5, -6]]], dtype=torch.float)
     # prelu(in_tensor, 2, 2, 6)
+    # softmax2d(in_tensor, 2, 2, 6, dim=1)
+    # softmax2d(in_tensor, 2, 2, 6, dim=2)
+
+    # in_tensor = torch.tensor([[1, 2, 3, -4, -5, -6, -1, -2, -3, 4, 5, 6]], dtype=torch.float)
+    # softmax(in_tensor, in_tensor.size(1))
     pass
