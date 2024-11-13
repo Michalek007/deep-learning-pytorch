@@ -304,4 +304,26 @@ if __name__ == '__main__':
     # ]], dtype=torch.float)
     # max_pool_(in_tensor, in_channels=1, input_height=3, input_width=3, kernel_size=2, stride=2, padding=(0, 0), ceil_mode=True)
     # max_pool_(in_tensor, in_channels=1, input_height=3, input_width=3, kernel_size=3, stride=3, padding=(1, 1), ceil_mode=True)
+
+    # in_tensor = torch.tensor([
+    #     [[1, 2, 3], [4, 5, 6]],
+    #     [[7, 8, 9], [10, 11, 12]],
+    # ], dtype=torch.float)
+    # print(c_parser.tensor_to_const_array('input', in_tensor))
+    # in_tensor = in_tensor.permute(2, 1, 0)
+    # print(c_parser.output_testing(2*2*3, in_tensor))
+    # in_tensor = in_tensor.permute(2, 0, 1)
+    # print(c_parser.output_testing(2*2*3, in_tensor))
+
+    # in_tensor = torch.torch.randn(3, 12, 12)
+    # print(c_parser.tensor_to_const_array('input', in_tensor))
+    # in_tensor = in_tensor.permute(2, 1, 0)
+    # print(c_parser.output_testing(3*12*12, in_tensor))
+
+    # in_tensor = torch.rand(1, 3, 4, 4)
+    # max_pool_(in_tensor, in_channels=3, input_height=4, input_width=4, kernel_size=3, stride=2, padding=0, ceil_mode=True)
+    # in_tensor = torch.rand(1, 3, 4, 4) * -1
+    # max_pool_(in_tensor, in_channels=3, input_height=4, input_width=4, kernel_size=3, stride=2, padding=0, ceil_mode=True)
+
+    # conv_(in_tensor, in_channels=3, out_channels=2, input_height=4, input_width=4, kernel_size=2, stride=2, padding=(2, 2))
     pass

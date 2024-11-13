@@ -20,7 +20,7 @@ class CParser:
             data_type = 'undefined'
         c_array = f'{data_type} {name}[] = {{'
 
-        c_array += ', '.join(map(lambda t: str(t.item()), tensor))
+        c_array += ', '.join(map(lambda t: str(round(t.item(), 5)), tensor))
 
         c_array += '};'
         return c_array
@@ -134,12 +134,13 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                 kernel_h, kernel_w = get_value(layer.kernel_size)
                 stride_h, stride_w = get_value(layer.stride)
                 padding_h, padding_w = get_value(layer.padding)
-                output_len, output_size = get_max_pool_output_size(output_channels, input_size, layer.kernel_size, layer.stride, layer.padding)
+                output_len, output_size = get_max_pool_output_size(output_channels, input_size, layer.kernel_size, layer.stride, layer.padding, layer.ceil_mode)
                 layer_str = f'float output{i}[{output_len}];\n' + \
                             f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[1]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {int(layer.ceil_mode)}, {input_array_name}, output{i});\n'
             elif name == 'Linear':
                 output_len = layer.out_features
-                output_size = (1, output_len)
+                output_channels = layer.out_features
+                output_size = (1, 1)
                 layer_str = f'float output{i}[{output_len}];\n' + \
                             f'CNN_FcLayerForward({layer.in_features}, {output_len}, {input_array_name}, weight{j}, bias{k}, output{i});\n'
                 j += 1
