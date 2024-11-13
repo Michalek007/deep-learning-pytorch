@@ -70,7 +70,7 @@ CNN_MaxPoolForward(inputChannels, inputHeight, inputWidth, kernelHeight, kernelW
 
     def max_pool_(self, output_len: int):
         return f"""float output[{output_len}];
-CNN_MaxPoolForward_(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, strideH, strideW, paddingH, paddingW, input, output);"""
+CNN_MaxPoolForward_(inputChannels, inputHeight, inputWidth, kernelHeight, kernelWidth, strideH, strideW, paddingH, paddingW, ceilMode, input, output);"""
 
     def prelu(self, output_len: int):
             return f"""float output[{output_len}];
@@ -86,12 +86,16 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
 
     def model(self, model: torch.nn.Module, input_size: tuple):
         model_c_str = ''
-        i, j = 0, 0
+        i, j, k = 0, 0, 0
         for key, value in model.state_dict().items():
-            name = key.split('.')[-1] + str(j)
-            model_c_str += self.tensor_to_const_array(name, value) + '\n'
-            if i % 2 != 0:
+            name = key.split('.')[-1]
+            if name == 'weight':
+                name += str(j)
                 j += 1
+            elif name == 'bias':
+                name += str(k)
+                k += 1
+            model_c_str += self.tensor_to_const_array(name, value) + '\n'
             i += 1
 
         i, j, k = 0, 0, 0
@@ -132,10 +136,10 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                 padding_h, padding_w = get_value(layer.padding)
                 output_len, output_size = get_max_pool_output_size(output_channels, input_size, layer.kernel_size, layer.stride, layer.padding)
                 layer_str = f'float output{i}[{output_len}];\n' + \
-                            f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[1]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {input_array_name}, output{i});\n'
+                            f'CNN_MaxPoolForward_({output_channels}, {input_size[0]}, {input_size[1]}, {kernel_h}, {kernel_w}, {stride_h}, {stride_w}, {padding_h}, {padding_w}, {int(layer.ceil_mode)}, {input_array_name}, output{i});\n'
             elif name == 'Linear':
                 output_len = layer.out_features
-                output_size = None
+                output_size = (1, output_len)
                 layer_str = f'float output{i}[{output_len}];\n' + \
                             f'CNN_FcLayerForward({layer.in_features}, {output_len}, {input_array_name}, weight{j}, bias{k}, output{i});\n'
                 j += 1
@@ -145,10 +149,10 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                             f'CNN_ReLU({output_len}, {input_array_name}, output{i});\n'
             elif name == 'PReLU':
                 layer_str = f'float output{i}[{output_len}];\n' + \
-                            f'CNN_PReLU({output_channels}, {input_size}, {input_array_name}, weight{j}, output{i});\n'
+                            f'CNN_PReLU({output_channels}, {input_size[0]}, {input_size[1]}, {input_array_name}, weight{j}, output{i});\n'
                 j += 1
             elif name == 'Softmax':
-                if not input_size:
+                if input_size[0] == 1:
                     layer_str = f'float output{i}[{output_len}];\n' + \
                                 f'CNN_Softmax({output_len}, {input_array_name}, output{i});\n'
                 else:

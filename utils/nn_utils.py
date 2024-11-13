@@ -1,4 +1,5 @@
 from typing import Union
+import math
 
 
 def params_to_tuple(kernel_size: Union[int, tuple], stride: Union[int, tuple], padding: Union[int, tuple]):
@@ -25,10 +26,11 @@ def get_conv_output_size(out_channels: int, input_size: tuple, kernel_size: Unio
     kernel_size, stride, padding = params_to_tuple(kernel_size, stride, padding)
 
     output_height, output_width = get_output_size(input_size, kernel_size, stride, padding)
-    return int(out_channels * output_height * output_width), (int(output_height), int(output_width))
+    output_height, output_width = int(output_height), int(output_width)
+    return int(out_channels * output_height * output_width), (output_height, output_width)
 
 
-def get_max_pool_output_size(in_channels: int, input_size: tuple, kernel_size: Union[int, tuple], stride: Union[int, tuple] = None, padding: Union[int, tuple] = 0):
+def get_max_pool_output_size(in_channels: int, input_size: tuple, kernel_size: Union[int, tuple], stride: Union[int, tuple] = None, padding: Union[int, tuple] = 0, ceil_mode: bool = False):
     """
     Returns:
         flatten output len, (output_height, output_width)
@@ -38,4 +40,5 @@ def get_max_pool_output_size(in_channels: int, input_size: tuple, kernel_size: U
     if not stride:
         stride = kernel_size
     output_height, output_width = get_output_size(input_size, kernel_size, stride, padding)
-    return int(in_channels * output_height * output_width), (int(output_height), int(output_width))
+    output_height, output_width = (math.ceil(output_height), math.ceil(output_width)) if ceil_mode else (int(output_height), int(output_width))
+    return int(in_channels * output_height * output_width), (output_height, output_width)

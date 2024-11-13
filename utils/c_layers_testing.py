@@ -145,9 +145,9 @@ def max_pool(in_tensor: torch.Tensor, in_channels: int, input_height: int, input
     print('\n\n')
 
 
-def max_pool_(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int, kernel_size: Union[int, tuple], stride: Union[int, tuple] = 1, padding: Union[int, tuple] = 0):
+def max_pool_(in_tensor: torch.Tensor, in_channels: int, input_height: int, input_width: int, kernel_size: Union[int, tuple], stride: Union[int, tuple] = 1, padding: Union[int, tuple] = 0, ceil_mode: bool = False):
     kernel_size, stride, padding = params_to_tuple(kernel_size, stride, padding)
-    pool = nn.MaxPool2d(kernel_size=kernel_size, stride=stride, padding=padding)
+    pool = nn.MaxPool2d(kernel_size=kernel_size, stride=stride, padding=padding, ceil_mode=ceil_mode)
     out_tensor = pool(in_tensor)
 
     input_params_dict = {
@@ -159,12 +159,13 @@ def max_pool_(in_tensor: torch.Tensor, in_channels: int, input_height: int, inpu
         'strideH': ('int', stride[0]),
         'strideW': ('int', stride[1]),
         'paddingH': ('int', padding[0]),
-        'paddingW': ('int', padding[1])
+        'paddingW': ('int', padding[1]),
+        'ceilMode': ('int', int(ceil_mode))
     }
 
     variables = c_parser.dict_to_variables(input_params_dict)
     in_array = c_parser.tensor_to_array('input', in_tensor)
-    output_size, _ = get_max_pool_output_size(in_channels, (input_height, input_width), kernel_size, stride, padding)
+    output_size, _ = get_max_pool_output_size(in_channels, (input_height, input_width), kernel_size, stride, padding, ceil_mode)
 
     print(variables)
     print(in_array)
@@ -295,4 +296,12 @@ if __name__ == '__main__':
     #     [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
     # ]], dtype=torch.float)
     # softmax2d(in_tensor, 3, 4, 4, dim=1)
+
+    # in_tensor = torch.tensor([[
+    #     [1, 2, 3],
+    #     [1, 2, 3],
+    #     [1, 2, 3]
+    # ]], dtype=torch.float)
+    # max_pool_(in_tensor, in_channels=1, input_height=3, input_width=3, kernel_size=2, stride=2, padding=(0, 0), ceil_mode=True)
+    # max_pool_(in_tensor, in_channels=1, input_height=3, input_width=3, kernel_size=3, stride=3, padding=(1, 1), ceil_mode=True)
     pass
