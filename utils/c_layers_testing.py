@@ -2,6 +2,8 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 from typing import Union
+from torchvision.ops.boxes import nms
+from torchvision.ops.boxes import box_iou
 
 from c_parser import CParser
 from nn_utils import get_conv_output_size, get_max_pool_output_size, params_to_tuple
@@ -326,4 +328,63 @@ if __name__ == '__main__':
     # max_pool_(in_tensor, in_channels=3, input_height=4, input_width=4, kernel_size=3, stride=2, padding=0, ceil_mode=True)
 
     # conv_(in_tensor, in_channels=3, out_channels=2, input_height=4, input_width=4, kernel_size=2, stride=2, padding=(2, 2))
+
+    # x = (
+    #     (50, 50, 70, 70),
+    #     (10, 10, 20, 20),
+    # )
+    # y = (
+    #     (40, 40, 70, 70),
+    #     (60, 60, 80, 80),
+    # )
+    # x = torch.tensor(x, dtype=torch.float)
+    # y = torch.tensor(y, dtype=torch.float)
+    # print(c_parser.tensor_to_const_array('boxes', x))
+    # print(c_parser.tensor_to_const_array('boxes2', y))
+    # print(c_parser.output_testing(len(x)*len(y), box_iou(x, y)))
+
+    # x = (
+    #     (50, 50, 70, 70),
+    #     (10, 10, 20, 20),
+    #     (40, 40, 70, 70),
+    #     (60, 60, 80, 80),
+    # )
+    # scores = (0.8, 0.1, 0.1, 0.1)
+    # x = torch.tensor(x, dtype=torch.float)
+    # scores = torch.tensor(scores, dtype=torch.float)
+    # indexes = nms(x, scores, 0.3)
+    # x_after_nms = x[indexes]
+    # print(c_parser.tensor_to_const_array('boxes', x))
+    # print(c_parser.tensor_to_const_array('scores', scores))
+    # print(c_parser.output_testing(x_after_nms.flatten().size(0), x_after_nms))
+
+
+    # print(c_parser.tensor_to_const_array('boxes', x))
+    # print(c_parser.tensor_to_const_array('boxes2', y))
+    # print(c_parser.output_testing(len(x)*len(y), box_iou(x, y)))
+
+    # def torch_pool(inputs, target_size):
+    #     start_points = (torch.arange(target_size, dtype=torch.float32) * (inputs.size(-1) / target_size)).long()
+    #     end_points = ((torch.arange(target_size, dtype=torch.float32) + 1) * (
+    #                 inputs.size(-1) / target_size)).ceil().long()
+    #     pooled = []
+    #     for idx in range(target_size):
+    #         pooled.append(torch.mean(inputs[:, :, start_points[idx]:end_points[idx]], dim=-1, keepdim=False))
+    #     pooled = torch.cat(pooled, -1)
+    #     return pooled
+    #
+    # x = torch_pool(torch.tensor(inps_torch), 4)
+    # print(x)
+
+    x = torch.rand((3, 8, 10))
+    y = nn.AdaptiveAvgPool2d((4, 4))(x)
+    print(c_parser.tensor_to_const_array('input', x))
+    print(c_parser.output_testing(3*4*4, y))
+
+    input_size = torch.tensor((8, 10))
+    output_size = torch.tensor((4, 4))
+    kernel_size = (input_size + output_size - 1) // output_size
+    print(kernel_size)
+
+    print((8+4-1) // 4)
     pass

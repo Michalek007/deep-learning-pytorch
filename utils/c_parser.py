@@ -153,7 +153,7 @@ CNN_Softmax2D(inputChannels, inputHeight, inputWidth, dim, input, output);"""
                             f'CNN_PReLU({output_channels}, {input_size[0]}, {input_size[1]}, {input_array_name}, weight{j}, output{i});\n'
                 j += 1
             elif name == 'Softmax':
-                if input_size[0] == 1:
+                if input_size == (1, 1):
                     layer_str = f'float output{i}[{output_len}];\n' + \
                                 f'CNN_Softmax({output_len}, {input_array_name}, output{i});\n'
                 else:
