@@ -1,0 +1,52 @@
+conv1:4;conv2:4;fc:64;kernel:5 lr:0.015421670225292113;batch_size:8;epochs:5
+NeuralNetwork(
+  (conv1): Conv2d(3, 4, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(4, 4, kernel_size=(6, 6), stride=(1, 1))
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=13924, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=10, bias=True)
+  )
+)Accuracy: 0.2%
+
+conv1:4;conv2:4;fc:64;kernel:5 lr:0.015421670225292113;batch_size:8;epochs:5
+NeuralNetwork(
+  (conv1): Conv2d(3, 4, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(4, 4, kernel_size=(5, 5), stride=(1, 1))
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=5476, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=10, bias=True)
+  )
+)Accuracy: 0.2%
+
+conv1:4;conv2:4;fc:64;kernel:5 lr:0.015421670225292113;batch_size:8;epochs:1
+NeuralNetwork(
+  (conv1): Conv2d(3, 4, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(4, 4, kernel_size=(5, 5), stride=(1, 1))
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=5476, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=64, bias=True)
+  )
+)Accuracy: 96.8%
+
+conv1:4;conv2:4;fc:64;kernel:5 lr:0.015421670225292113;batch_size:8;epochs:5
+NeuralNetwork(
+  (conv1): Conv2d(3, 4, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(4, 4, kernel_size=(5, 5), stride=(1, 1))
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=5476, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=64, bias=True)
+  )
+)Accuracy: 95.2%
+

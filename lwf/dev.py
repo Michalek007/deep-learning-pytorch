@@ -2,17 +2,114 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets
-from torchvision.transforms import ToTensor
+from torchvision.transforms import ToTensor, ToPILImage
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 from lwf_dataset import LWFDataset
+from facenet_pytorch import MTCNN
+from PIL import Image
 
 
-training_data = LWFDataset(
+training_data = datasets.LFWPairs(
     root="data",
     split="train",
     download=True
 )
+
+mtcnn = MTCNN(keep_all=False, select_largest=True)
+transform_to_pil_img = ToPILImage()
+transform_to_tensor = ToTensor()
+
+# target = mtcnn(training_data[0][0], save_path='face.png')
+# print(target.size())
+#
+# print(target)
+
+x = transform_to_tensor(training_data[0][0]).unsqueeze(dim=0)
+x = torch.cat([x, x])
+print(x.size())
+target = mtcnn(x, save_path='face1.png')
+print(target)
+
+
+
+# print(x.size())
+# n = x.numpy()
+# print(n.shape)
+# target = mtcnn(n, save_path='face1.png')
+# print(target)
+
+# target_img = transform_to_pil_img(target)
+# target_img.save(f'{training_data.pair_names[0][0]}.png')
+
+target_img_from_file = Image.open(f'face1.png')
+target_from_file = transform_to_tensor(target_img_from_file)
+
+print(target_from_file.size())
+print(target.size())
+
+print(target)
+print(target_from_file)
+
+
+# print(target)
+# print(target_from_file)
+# for i in range(len(target)):
+#     print(target[i])
+#     print(target_from_file[i])
+
+
+# lwf_mtcnn_path = Path('data/lwf-mtcnn')
+# if not lwf_mtcnn_path.is_dir():
+#     lwf_mtcnn_path.mkdir()
+#     transform = ToPILImage()
+#     img1, img2, img3 = map(transform, self.__getitem__(0))
+#     img1.save(self.triplets_labels[0][0] + '.jpg')
+#     img2.save(self.triplets_labels[0][1] + '.jpg')
+#     img3.save(self.triplets_labels[0][2] + '.jpg')
+
+
+# training_data = LWFDataset(
+#     root="data",
+#     split="train",
+#     download=True
+# )
+
+# training_data = LWFDataset(
+#     root="data",
+#     split="train",
+#     download=True,
+#     transform=ToTensor()
+# )
+#
+# print(len(training_data))
+# print(len(training_data.triplets_labels))
+#
+# print(training_data[0][0].size())
+
+# test_data = LWFDataset(
+#     root="data",
+#     split="test",
+#     download=True,
+#     transform=ToTensor()
+# )
+#
+# print(len(test_data))
+# print(len(test_data.triplets_labels))
+# print(test_data.triplets_labels[0])
+# print(test_data.triplets_labels[1])
+
+# test_data = LWFDataset(
+#     root="data",
+#     split="10fold",
+#     download=True,
+#     transform=ToTensor()
+# )
+#
+# print(len(test_data))
+# print(len(test_data.triplets_labels))
+# print(test_data.triplets_labels[0])
+# print(test_data.triplets_labels[1])
 
 # training_data = datasets.LFWPairs(
 #     root="data",
@@ -68,21 +165,21 @@ training_data = LWFDataset(
 
 
 
-plt.imshow(training_data[0][0])
-plt.show()
-plt.imshow(training_data[0][1])
-plt.show()
-plt.imshow(training_data[0][2])
-plt.show()
-# print(training_data[0][2])
-
-plt.imshow(training_data[1][0])
-plt.show()
-plt.imshow(training_data[1][1])
-plt.show()
-plt.imshow(training_data[1][2])
-plt.show()
-# print(training_data[1][2])
+# plt.imshow(training_data[0][0])
+# plt.show()
+# plt.imshow(training_data[0][1])
+# plt.show()
+# plt.imshow(training_data[0][2])
+# plt.show()
+# # print(training_data[0][2])
+#
+# plt.imshow(training_data[1][0])
+# plt.show()
+# plt.imshow(training_data[1][1])
+# plt.show()
+# plt.imshow(training_data[1][2])
+# plt.show()
+# # print(training_data[1][2])
 
 
 
