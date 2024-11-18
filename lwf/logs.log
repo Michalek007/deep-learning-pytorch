@@ -1,0 +1,110 @@
+2024-11-17 14:12:04,451 INFO: Training of model: f'lr:0.015421670225292113;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 14:16:00,287 INFO: Accuracy: 50.2%; Average train loss: 1.00; Average test loss: 0.00 after 1 epoch. 
+2024-11-17 14:21:22,429 INFO: Training of model: f'lr:0.015421670225292113;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 14:25:16,476 INFO: Accuracy: 50.2%; Average train loss: 0.98; Average test loss: 0.00 after 1 epoch. 
+2024-11-17 14:29:07,102 INFO: Accuracy: 50.2%; Average train loss: 0.71; Average test loss: 0.00 after 2 epoch. 
+2024-11-17 14:32:54,192 INFO: Accuracy: 50.2%; Average train loss: 0.47; Average test loss: 0.00 after 3 epoch. 
+2024-11-17 14:36:21,165 INFO: Accuracy: 50.2%; Average train loss: 0.33; Average test loss: 0.00 after 4 epoch. 
+2024-11-17 14:39:47,183 INFO: Accuracy: 50.2%; Average train loss: 0.25; Average test loss: 0.00 after 5 epoch. 
+2024-11-17 14:45:08,115 INFO: Training of model: f'lr:0.015421670225292113;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 14:48:56,527 INFO: Accuracy: 50.2%; Average train loss: 0.19; Average test loss: 0.00 after 1 epoch. 
+2024-11-17 14:52:14,182 INFO: Accuracy: 50.2%; Average train loss: 0.08; Average test loss: 0.00 after 2 epoch. 
+2024-11-17 14:55:30,929 INFO: Accuracy: 50.1%; Average train loss: 0.02; Average test loss: 0.00 after 3 epoch. 
+2024-11-17 14:58:46,868 INFO: Accuracy: 50.6%; Average train loss: 0.00; Average test loss: 0.00 after 4 epoch. 
+2024-11-17 15:02:02,552 INFO: Accuracy: 51.9%; Average train loss: 0.02; Average test loss: 0.00 after 5 epoch. 
+2024-11-17 15:08:32,403 INFO: Training of model: f'lr:0.015421670225292113;batch_size:8;epochs:20; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 15:11:48,126 INFO: Accuracy: 53.2%; Average train loss: 0.00; Average test loss: 0.00 after 1 epoch. 
+2024-11-17 15:15:05,602 INFO: Accuracy: 54.4%; Average train loss: 0.08; Average test loss: 0.00 after 2 epoch. 
+2024-11-17 15:18:21,357 INFO: Accuracy: 52.2%; Average train loss: 0.00; Average test loss: 0.00 after 3 epoch. 
+2024-11-17 15:21:37,629 INFO: Accuracy: 51.4%; Average train loss: 0.01; Average test loss: 0.00 after 4 epoch. 
+2024-11-17 15:24:53,323 INFO: Accuracy: 51.5%; Average train loss: 0.00; Average test loss: 0.00 after 5 epoch. 
+2024-11-17 15:28:08,284 INFO: Accuracy: 51.2%; Average train loss: 0.00; Average test loss: 0.00 after 6 epoch. 
+2024-11-17 15:31:22,905 INFO: Accuracy: 51.5%; Average train loss: 0.00; Average test loss: 0.00 after 7 epoch. 
+ 2024-11-17 15:34:43,431 INFO: Accuracy: 50.9%; Average train loss: 0.00; Average test loss: 0.00 after 8 epoch.
+2024-11-17 15:38:02,029 INFO: Accuracy: 50.7%; Average train loss: 0.00; Average test loss: 0.00 after 9 epoch. 
+2024-11-17 15:41:21,275 INFO: Accuracy: 51.0%; Average train loss: 0.00; Average test loss: 0.00 after 10 epoch. 
+2024-11-17 15:44:40,869 INFO: Accuracy: 51.0%; Average train loss: 0.00; Average test loss: 0.00 after 11 epoch. 
+2024-11-17 15:47:59,284 INFO: Accuracy: 50.9%; Average train loss: 0.00; Average test loss: 0.00 after 12 epoch. 
+2024-11-17 15:51:18,802 INFO: Accuracy: 50.8%; Average train loss: 0.00; Average test loss: 0.00 after 13 epoch. 
+2024-11-17 15:54:37,496 INFO: Accuracy: 51.0%; Average train loss: 0.00; Average test loss: 0.00 after 14 epoch. 
+2024-11-17 15:57:55,691 INFO: Accuracy: 50.9%; Average train loss: 0.00; Average test loss: 0.00 after 15 epoch. 
+2024-11-17 16:01:14,357 INFO: Accuracy: 50.8%; Average train loss: 0.00; Average test loss: 0.00 after 16 epoch. 
+2024-11-17 16:04:32,750 INFO: Accuracy: 50.8%; Average train loss: 0.00; Average test loss: 0.00 after 17 epoch. 
+2024-11-17 16:07:51,386 INFO: Accuracy: 50.8%; Average train loss: 0.00; Average test loss: 0.00 after 18 epoch. 
+2024-11-17 16:11:09,749 INFO: Accuracy: 50.9%; Average train loss: 0.00; Average test loss: 0.00 after 19 epoch. 
+2024-11-17 16:14:28,078 INFO: Accuracy: 50.9%; Average train loss: 0.00; Average test loss: 0.00 after 20 epoch. 
+2024-11-17 16:49:41,910 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 16:53:12,123 INFO: Accuracy: 50.1%; Average train loss: 0.00; Average test loss: 0.00 after 1 epoch. 
+2024-11-17 16:57:13,032 INFO: Accuracy: 50.2%; Average train loss: 0.00; Average test loss: 0.00 after 2 epoch. 
+2024-11-17 17:00:55,687 INFO: Accuracy: 50.2%; Average train loss: 0.00; Average test loss: 0.00 after 3 epoch. 
+2024-11-17 17:04:23,513 INFO: Accuracy: 50.2%; Average train loss: 0.00; Average test loss: 0.00 after 4 epoch. 
+2024-11-17 17:07:56,758 INFO: Accuracy: 50.2%; Average train loss: 0.00; Average test loss: 0.00 after 5 epoch. 
+2024-11-17 18:35:01,842 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 18:40:18,718 INFO: Accuracy: 62.6%; Average train loss: 109.64907967; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 18:45:29,855 INFO: Accuracy: 64.1%; Average train loss: 94.92020388; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 18:50:39,822 INFO: Accuracy: 63.6%; Average train loss: 86.55005556; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 18:55:52,005 INFO: Accuracy: 62.4%; Average train loss: 82.94401602; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 19:01:01,336 INFO: Accuracy: 61.6%; Average train loss: 76.93527767; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-17 19:26:05,923 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:20; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 19:31:18,673 INFO: Accuracy: 60.0%; Average train loss: 71.19971219; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 19:36:31,161 INFO: Accuracy: 60.1%; Average train loss: 66.42899898; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 19:41:41,699 INFO: Accuracy: 58.6%; Average train loss: 61.20278322; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 19:46:52,458 INFO: Accuracy: 56.3%; Average train loss: 58.18522414; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 19:52:05,123 INFO: Accuracy: 57.7%; Average train loss: 59.99112482; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-17 19:57:25,485 INFO: Accuracy: 56.8%; Average train loss: 52.04142539; Average test loss: 0.00000000 after 6 epoch. 
+2024-11-17 20:03:03,792 INFO: Accuracy: 56.3%; Average train loss: 53.49489824; Average test loss: 0.00000000 after 7 epoch. 
+2024-11-17 20:08:15,518 INFO: Accuracy: 56.6%; Average train loss: 46.91408951; Average test loss: 0.00000000 after 8 epoch. 
+2024-11-17 20:13:27,146 INFO: Accuracy: 55.8%; Average train loss: 43.11514336; Average test loss: 0.00000000 after 9 epoch. 
+2024-11-17 20:18:36,886 INFO: Accuracy: 55.1%; Average train loss: 42.63253222; Average test loss: 0.00000000 after 10 epoch. 
+2024-11-17 20:23:48,286 INFO: Accuracy: 54.1%; Average train loss: 41.27473286; Average test loss: 0.00000000 after 11 epoch. 
+2024-11-17 20:29:03,227 INFO: Accuracy: 55.1%; Average train loss: 36.16527925; Average test loss: 0.00000000 after 12 epoch. 
+2024-11-17 20:34:15,437 INFO: Accuracy: 54.0%; Average train loss: 35.18621188; Average test loss: 0.00000000 after 13 epoch. 
+2024-11-17 20:39:27,426 INFO: Accuracy: 53.8%; Average train loss: 28.82599722; Average test loss: 0.00000000 after 14 epoch. 
+2024-11-17 20:44:37,844 INFO: Accuracy: 54.0%; Average train loss: 24.59188868; Average test loss: 0.00000000 after 15 epoch. 
+2024-11-17 20:50:07,774 INFO: Accuracy: 53.2%; Average train loss: 24.60191369; Average test loss: 0.00000000 after 16 epoch. 
+2024-11-17 20:55:56,509 INFO: Accuracy: 54.0%; Average train loss: 23.71228859; Average test loss: 0.00000000 after 17 epoch. 
+2024-11-17 21:01:50,645 INFO: Accuracy: 52.8%; Average train loss: 22.48391916; Average test loss: 0.00000000 after 18 epoch. 
+2024-11-17 21:07:39,864 INFO: Accuracy: 52.7%; Average train loss: 21.83036779; Average test loss: 0.00000000 after 19 epoch. 
+2024-11-17 21:13:30,260 INFO: Accuracy: 52.5%; Average train loss: 18.15214871; Average test loss: 0.00000000 after 20 epoch. 
+2024-11-17 21:41:22,308 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 21:47:00,323 INFO: Accuracy: 63.9%; Average train loss: 0.80622840; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 21:52:57,800 INFO: Accuracy: 61.0%; Average train loss: 0.67386708; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 21:58:39,283 INFO: Accuracy: 59.8%; Average train loss: 0.62420994; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 22:04:37,200 INFO: Accuracy: 59.4%; Average train loss: 0.59747258; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 22:10:30,530 INFO: Accuracy: 57.6%; Average train loss: 0.57729687; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-17 22:12:10,956 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 22:18:08,241 INFO: Accuracy: 61.8%; Average train loss: 0.83745281; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 22:24:18,496 INFO: Accuracy: 63.4%; Average train loss: 0.66103106; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 22:30:33,017 INFO: Accuracy: 61.0%; Average train loss: 0.60399185; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 22:36:48,064 INFO: Accuracy: 63.0%; Average train loss: 0.62093378; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 22:42:45,531 INFO: Accuracy: 63.3%; Average train loss: 0.58731707; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-17 22:51:44,143 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 22:57:37,158 INFO: Accuracy: 64.0%; Average train loss: 0.55978520; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 23:03:13,409 INFO: Accuracy: 59.4%; Average train loss: 0.54057556; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 23:08:56,750 INFO: Accuracy: 61.5%; Average train loss: 0.52901237; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 23:15:34,260 INFO: Accuracy: 60.4%; Average train loss: 0.53807684; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 23:22:29,857 INFO: Accuracy: 59.8%; Average train loss: 0.52040222; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-17 23:23:38,960 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-17 23:29:40,832 INFO: Accuracy: 57.7%; Average train loss: 0.56061922; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-17 23:36:10,768 INFO: Accuracy: 63.5%; Average train loss: 0.46419713; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-17 23:42:55,884 INFO: Accuracy: 59.6%; Average train loss: 0.40955910; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-17 23:49:06,348 INFO: Accuracy: 57.0%; Average train loss: 0.38804267; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-17 23:54:57,495 INFO: Accuracy: 58.5%; Average train loss: 0.37255665; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-18 00:00:12,927 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-18 00:05:22,680 INFO: Accuracy: 57.2%; Average train loss: 0.37128084; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-18 00:10:31,464 INFO: Accuracy: 56.2%; Average train loss: 0.35246198; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-18 00:15:38,649 INFO: Accuracy: 56.2%; Average train loss: 0.33758935; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-18 00:20:45,392 INFO: Accuracy: 53.9%; Average train loss: 0.32244741; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-18 00:25:52,685 INFO: Accuracy: 55.8%; Average train loss: 0.32057222; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-18 00:46:01,179 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-18 00:51:25,984 INFO: Accuracy: 54.8%; Average train loss: 0.30404756; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-18 00:56:37,830 INFO: Accuracy: 54.4%; Average train loss: 0.29477868; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-18 01:01:48,868 INFO: Accuracy: 53.7%; Average train loss: 0.27933835; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-18 01:06:59,007 INFO: Accuracy: 53.4%; Average train loss: 0.27015085; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-18 01:12:08,909 INFO: Accuracy: 53.5%; Average train loss: 0.26024386; Average test loss: 0.00000000 after 5 epoch. 
+2024-11-18 01:14:58,907 INFO: Training of model: f'lr:0.001;batch_size:8;epochs:5; (('conv', 32, 3, 2, 3), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 64, 3, 1, 1), ('conv', 16, 1, 1, 0), ('max_pool', 2, 2, 0), ('conv', 128, 3, 1, 1), ('avg_pool', 5, 1, 0), ('linear', 256), ('leaky_relu', 0.1), ('linear', 128))'
+2024-11-18 01:21:17,002 INFO: Accuracy: 56.5%; Average train loss: 0.53749683; Average test loss: 0.00000000 after 1 epoch. 
+2024-11-18 01:27:27,748 INFO: Accuracy: 58.7%; Average train loss: 0.44774004; Average test loss: 0.00000000 after 2 epoch. 
+2024-11-18 01:33:47,295 INFO: Accuracy: 60.1%; Average train loss: 0.42412008; Average test loss: 0.00000000 after 3 epoch. 
+2024-11-18 01:39:53,707 INFO: Accuracy: 59.9%; Average train loss: 0.41048969; Average test loss: 0.00000000 after 4 epoch. 
+2024-11-18 01:45:54,506 INFO: Accuracy: 55.9%; Average train loss: 0.40579447; Average test loss: 0.00000000 after 5 epoch. 

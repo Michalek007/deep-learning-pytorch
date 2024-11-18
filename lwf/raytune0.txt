@@ -1,0 +1,1956 @@
+Files already downloaded and verified
+Files already downloaded and verified
+2024-11-18 01:55:27,030	INFO worker.py:1752 -- Started a local Ray instance.
+2024-11-18 01:55:28,630	INFO tune.py:263 -- Initializing Ray automatically. For cluster usage or custom Ray initialization, call `ray.init(...)` before `tune.run(...)`.
+2024-11-18 01:55:28,633	INFO tune.py:622 -- [output] This will use the new output engine with verbosity 2. To disable the new output and use the legacy output engine, set the environment variable RAY_AIR_NEW_OUTPUT=0. For more information, please see https://github.com/ray-project/ray/issues/36949
+╭──────────────────────────────────────────────────────────────────╮
+│ Configuration for experiment     train_lwf_2024-11-18_01-55-28   │
+├──────────────────────────────────────────────────────────────────┤
+│ Search algorithm                 BasicVariantGenerator           │
+│ Scheduler                        AsyncHyperBandScheduler         │
+│ Number of trials                 10                              │
+╰──────────────────────────────────────────────────────────────────╯
+
+View detailed results here: C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28
+To visualize your results with TensorBoard, run: `tensorboard --logdir C:/Users/MICHAE~1/AppData/Local/Temp/ray/session_2024-11-18_01-55-25_218668_9076/artifacts/2024-11-18_01-55-28/train_lwf_2024-11-18_01-55-28/driver_artifacts`
+
+Trial status: 10 PENDING
+Current time: 2024-11-18 01:55:28. Total running time: 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   PENDING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   PENDING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   PENDING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+(pid=20176)
+
+Trial train_lwf_cdd70_00001 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00001 config             │
+├────────────────────────────────────────────────┤
+│ b                                            8 │
+│ lr                                     0.05509 │
+│ m                                          0.8 │
+╰────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00002 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 config             │
+├────────────────────────────────────────────────┤
+│ b                                           16 │
+│ lr                                     0.08331 │
+│ m                                          0.9 │
+╰────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00000 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 config             │
+├────────────────────────────────────────────────┤
+│ b                                           16 │
+│ lr                                     0.06927 │
+│ m                                          0.5 │
+╰────────────────────────────────────────────────╯
+(func pid=6620) Files already downloaded and verified
+(func pid=15572) (1, 1) [repeated 11x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/ray-logging.html#log-deduplication for more options.)
+
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:55:58. Total running time: 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:56:28. Total running time: 1min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:56:59. Total running time: 1min 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:57:29. Total running time: 2min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+(func pid=15572) Files already downloaded and verified [repeated 5x across cluster]
+(func pid=1952)
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:57:59. Total running time: 2min 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:58:29. Total running time: 3min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b │
+├──────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16 │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8 │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8 │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2 │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8 │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8 │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2 │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16 │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4 │
+╰──────────────────────────────────────────────────────────╯
+(func pid=15572)
+(func pid=1952)  [repeated 2x across cluster]
+
+Trial train_lwf_cdd70_00002 finished iteration 1 at 2024-11-18 01:58:57. Total running time: 3min 28s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               202.92925 │
+│ time_total_s                                   202.92925 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.61591 │
+│ loss                                             0.69327 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00002 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000000
+(func pid=1952) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:58:59. Total running time: 3min 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b     iter     total time (s)       loss     accuracy │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16                                                     │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8                                                     │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 7 PENDING
+Current time: 2024-11-18 01:59:29. Total running time: 4min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status       m          lr     b     iter     total time (s)       loss     accuracy │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING    0.5   0.0692707    16                                                     │
+│ train_lwf_cdd70_00001   RUNNING    0.8   0.0550883     8                                                     │
+│ train_lwf_cdd70_00002   RUNNING    0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   PENDING    0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00004   PENDING    0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING    0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING    0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING    0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING    0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING    0.9   0.0926267     4                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)
+(func pid=15572)
+
+Trial train_lwf_cdd70_00000 finished iteration 1 at 2024-11-18 01:59:30. Total running time: 4min 1s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                                236.0224 │
+│ time_total_s                                    236.0224 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.59773 │
+│ loss                                             0.29769 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00000 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000000
+(func pid=15572) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial train_lwf_cdd70_00001 finished iteration 1 at 2024-11-18 01:59:34. Total running time: 4min 6s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00001 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               240.56724 │
+│ time_total_s                                   240.56724 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.62727 │
+│ loss                                             0.56704 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00001 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00001_1_b=8,lr=0.0551,m=0.8000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial train_lwf_cdd70_00001 completed after 1 iterations at 2024-11-18 01:59:34. Total running time: 4min 6s
+(func pid=6620) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00001_1_b=8,lr=0.0551,m=0.8000_2024-11-18_01-55-28/checkpoint_000000)
+(bundle_reservation_check_func pid=19208)  [repeated 2x across cluster]
+
+Trial status: 2 RUNNING | 1 TERMINATED | 7 PENDING
+Current time: 2024-11-18 01:59:59. Total running time: 4min 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   PENDING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00003 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00003 config             │
+├────────────────────────────────────────────────┤
+│ b                                            8 │
+│ lr                                     0.01709 │
+│ m                                          0.6 │
+╰────────────────────────────────────────────────╯
+(func pid=16284) (1, 1) [repeated 2x across cluster]
+(func pid=16284) Files already downloaded and verified
+(func pid=16284) Files already downloaded and verified
+
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:00:29. Total running time: 5min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:00:59. Total running time: 5min 30s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:01:29. Total running time: 6min 0s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:01:59. Total running time: 6min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:02:29. Total running time: 7min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        1            202.929   0.693273     0.615909 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)  [repeated 3x across cluster]
+
+Trial train_lwf_cdd70_00002 finished iteration 2 at 2024-11-18 02:02:31. Total running time: 7min 2s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000001 │
+│ time_this_iter_s                               213.92437 │
+│ time_total_s                                   416.85362 │
+│ training_iteration                                     2 │
+│ accuracy                                         0.65227 │
+│ loss                                              0.5729 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00002 saved a checkpoint for iteration 2 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000001
+(func pid=1952) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000001)
+
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:03:00. Total running time: 7min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        1            236.022   0.297691     0.597727 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)  [repeated 2x across cluster]
+
+Trial train_lwf_cdd70_00000 finished iteration 2 at 2024-11-18 02:03:07. Total running time: 7min 39s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000001 │
+│ time_this_iter_s                               217.56879 │
+│ time_total_s                                   453.59119 │
+│ training_iteration                                     2 │
+│ accuracy                                         0.64545 │
+│ loss                                             0.27062 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00000 saved a checkpoint for iteration 2 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000001
+(func pid=15572) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000001)
+
+Trial train_lwf_cdd70_00003 finished iteration 1 at 2024-11-18 02:03:08. Total running time: 7min 40s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00003 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               182.49955 │
+│ time_total_s                                   182.49955 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.58636 │
+│ loss                                             0.41834 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00003 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00003_3_b=8,lr=0.0171,m=0.6000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:03:30. Total running time: 8min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:04:00. Total running time: 8min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)  [repeated 2x across cluster]
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:04:30. Total running time: 9min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:05:00. Total running time: 9min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=16284)
+(func pid=16284)
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:05:30. Total running time: 10min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)
+(func pid=15572)
+Trial status: 3 RUNNING | 1 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:06:00. Total running time: 10min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        2            416.854   0.5729       0.652273 │
+│ train_lwf_cdd70_00003   RUNNING      0.6   0.0170884     8        1            182.5     0.418344     0.586364 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+(func pid=1952)
+
+Trial train_lwf_cdd70_00002 finished iteration 3 at 2024-11-18 02:06:04. Total running time: 10min 35s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000002 │
+│ time_this_iter_s                               213.21064 │
+│ time_total_s                                   630.06426 │
+│ training_iteration                                     3 │
+│ accuracy                                         0.63182 │
+│ loss                                             0.65306 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00002 saved a checkpoint for iteration 3 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000002
+(func pid=1952) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000002) [repeated 2x across cluster]
+(func pid=16284)
+
+Trial train_lwf_cdd70_00003 finished iteration 2 at 2024-11-18 02:06:21. Total running time: 10min 53s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00003 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000001 │
+│ time_this_iter_s                               193.04896 │
+│ time_total_s                                   375.54851 │
+│ training_iteration                                     2 │
+│ accuracy                                         0.57045 │
+│ loss                                             0.48855 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00003 saved a checkpoint for iteration 2 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00003_3_b=8,lr=0.0171,m=0.6000_2024-11-18_01-55-28/checkpoint_000001
+
+Trial train_lwf_cdd70_00003 completed after 2 iterations at 2024-11-18 02:06:21. Total running time: 10min 53s
+(func pid=16284) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00003_3_b=8,lr=0.0171,m=0.6000_2024-11-18_01-55-28/checkpoint_000001)
+(bundle_reservation_check_func pid=11392)
+
+Trial status: 2 RUNNING | 2 TERMINATED | 6 PENDING
+Current time: 2024-11-18 02:06:30. Total running time: 11min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        2            453.591   0.270617     0.645455 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   PENDING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00004 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00004 config             │
+├────────────────────────────────────────────────┤
+│ b                                            2 │
+│ lr                                     0.04551 │
+│ m                                          0.8 │
+╰────────────────────────────────────────────────╯
+(func pid=18540) (1, 1) [repeated 2x across cluster]
+(func pid=18540) Files already downloaded and verified
+(func pid=18540) Files already downloaded and verified
+(func pid=15572)
+
+Trial train_lwf_cdd70_00000 finished iteration 3 at 2024-11-18 02:06:41. Total running time: 11min 13s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000002 │
+│ time_this_iter_s                               213.97792 │
+│ time_total_s                                   667.56911 │
+│ training_iteration                                     3 │
+│ accuracy                                         0.63182 │
+│ loss                                             0.29934 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00000 saved a checkpoint for iteration 3 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000002
+(func pid=15572) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000002)
+
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:07:00. Total running time: 11min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:07:30. Total running time: 12min 1s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+(func pid=1952)
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:08:00. Total running time: 12min 31s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:08:30. Total running time: 13min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:09:00. Total running time: 13min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        3            630.064   0.653056     0.631818 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+(func pid=1952)
+
+Trial train_lwf_cdd70_00002 finished iteration 4 at 2024-11-18 02:09:12. Total running time: 13min 43s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000003 │
+│ time_this_iter_s                                187.8545 │
+│ time_total_s                                   817.91876 │
+│ training_iteration                                     4 │
+│ accuracy                                         0.65909 │
+│ loss                                             0.58596 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00002 saved a checkpoint for iteration 4 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000003
+(func pid=1952) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000003)
+
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:09:30. Total running time: 14min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=18540)  [repeated 2x across cluster]
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:10:00. Total running time: 14min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        3            667.569   0.299336     0.631818 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)
+
+Trial train_lwf_cdd70_00000 finished iteration 4 at 2024-11-18 02:10:19. Total running time: 14min 50s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000003 │
+│ time_this_iter_s                                217.7031 │
+│ time_total_s                                    885.2722 │
+│ training_iteration                                     4 │
+│ accuracy                                         0.60227 │
+│ loss                                             0.35599 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00000 saved a checkpoint for iteration 4 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000003
+(func pid=15572) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000003)
+
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:10:31. Total running time: 15min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+(func pid=1952)
+Trial status: 3 RUNNING | 2 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:11:01. Total running time: 15min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00004   RUNNING      0.8   0.0455095     2                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=18540)
+
+Trial train_lwf_cdd70_00004 finished iteration 1 at 2024-11-18 02:11:15. Total running time: 15min 46s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00004 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               281.63719 │
+│ time_total_s                                   281.63719 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.51818 │
+│ loss                                             0.86308 │
+╰──────────────────────────────────────────────────────────╯
+(func pid=18540) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00004_4_b=2,lr=0.0455,m=0.8000_2024-11-18_01-55-28/checkpoint_000000)
+Trial train_lwf_cdd70_00004 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00004_4_b=2,lr=0.0455,m=0.8000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial train_lwf_cdd70_00004 completed after 1 iterations at 2024-11-18 02:11:15. Total running time: 15min 47s
+(bundle_reservation_check_func pid=4052)
+
+Trial status: 2 RUNNING | 3 TERMINATED | 5 PENDING
+Current time: 2024-11-18 02:11:31. Total running time: 16min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   PENDING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00005 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 config             │
+├────────────────────────────────────────────────┤
+│ b                                            8 │
+│ lr                                     0.02524 │
+│ m                                          0.6 │
+╰────────────────────────────────────────────────╯
+(func pid=19860) (1, 1) [repeated 2x across cluster]
+(func pid=19860) Files already downloaded and verified
+(func pid=19860) Files already downloaded and verified
+
+Trial status: 3 RUNNING | 3 TERMINATED | 4 PENDING
+Current time: 2024-11-18 02:12:01. Total running time: 16min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00002   RUNNING      0.9   0.0833063    16        4            817.919   0.58596      0.659091 │
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   PENDING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=1952)
+
+Trial train_lwf_cdd70_00002 finished iteration 5 at 2024-11-18 02:12:16. Total running time: 16min 47s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00002 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000004 │
+│ time_this_iter_s                                184.1421 │
+│ time_total_s                                  1002.06086 │
+│ training_iteration                                     5 │
+│ accuracy                                         0.60909 │
+│ loss                                             0.64267 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00002 saved a checkpoint for iteration 5 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000004
+
+Trial train_lwf_cdd70_00002 completed after 5 iterations at 2024-11-18 02:12:16. Total running time: 16min 47s
+(func pid=1952) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00002_2_b=16,lr=0.0833,m=0.9000_2024-11-18_01-55-28/checkpoint_000004)
+(bundle_reservation_check_func pid=18960)
+
+Trial train_lwf_cdd70_00006 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00006 config             │
+├────────────────────────────────────────────────┤
+│ b                                            8 │
+│ lr                                     0.08483 │
+│ m                                          0.9 │
+╰────────────────────────────────────────────────╯
+(func pid=6264) Files already downloaded and verified
+(func pid=6264) Files already downloaded and verified
+(func pid=6264) (1, 1) [repeated 3x across cluster]
+
+Trial status: 3 RUNNING | 4 TERMINATED | 3 PENDING
+Current time: 2024-11-18 02:12:31. Total running time: 17min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 3 RUNNING | 4 TERMINATED | 3 PENDING
+Current time: 2024-11-18 02:13:01. Total running time: 17min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+(func pid=19860)
+Trial status: 3 RUNNING | 4 TERMINATED | 3 PENDING
+Current time: 2024-11-18 02:13:31. Total running time: 18min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   RUNNING      0.5   0.0692707    16        4            885.272   0.355985     0.602273 │
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00007   PENDING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=15572)
+
+Trial train_lwf_cdd70_00000 finished iteration 5 at 2024-11-18 02:13:34. Total running time: 18min 5s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00000 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000004 │
+│ time_this_iter_s                               194.74543 │
+│ time_total_s                                  1080.01763 │
+│ training_iteration                                     5 │
+│ accuracy                                            0.65 │
+│ loss                                             0.32601 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00000 saved a checkpoint for iteration 5 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000004
+
+Trial train_lwf_cdd70_00000 completed after 5 iterations at 2024-11-18 02:13:34. Total running time: 18min 5s
+(func pid=15572) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00000_0_b=16,lr=0.0693,m=0.5000_2024-11-18_01-55-28/checkpoint_000004)
+(bundle_reservation_check_func pid=20272)
+
+Trial train_lwf_cdd70_00007 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00007 config             │
+├────────────────────────────────────────────────┤
+│ b                                            2 │
+│ lr                                     0.05937 │
+│ m                                          0.7 │
+╰────────────────────────────────────────────────╯
+(func pid=8052) (1, 1) [repeated 2x across cluster]
+(func pid=8052) Files already downloaded and verified
+(func pid=8052) Files already downloaded and verified
+
+Trial status: 5 TERMINATED | 3 RUNNING | 2 PENDING
+Current time: 2024-11-18 02:14:01. Total running time: 18min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8                                                     │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+
+Trial train_lwf_cdd70_00005 finished iteration 1 at 2024-11-18 02:14:20. Total running time: 18min 51s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               168.92797 │
+│ time_total_s                                   168.92797 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.59318 │
+│ loss                                              0.4567 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00005 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000000
+(func pid=19860) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial status: 5 TERMINATED | 3 RUNNING | 2 PENDING
+Current time: 2024-11-18 02:14:31. Total running time: 19min 2s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=6264)
+Trial status: 5 TERMINATED | 3 RUNNING | 2 PENDING
+Current time: 2024-11-18 02:15:01. Total running time: 19min 32s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 5 TERMINATED | 3 RUNNING | 2 PENDING
+Current time: 2024-11-18 02:15:31. Total running time: 20min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 5 TERMINATED | 3 RUNNING | 2 PENDING
+Current time: 2024-11-18 02:16:01. Total running time: 20min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00006   RUNNING      0.9   0.084832      8                                                     │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00008   PENDING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+(func pid=6264)
+
+Trial train_lwf_cdd70_00006 finished iteration 1 at 2024-11-18 02:16:21. Total running time: 20min 52s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00006 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               238.05187 │
+│ time_total_s                                   238.05187 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.54091 │
+│ loss                                             0.99696 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00006 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00006_6_b=8,lr=0.0848,m=0.9000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial train_lwf_cdd70_00006 completed after 1 iterations at 2024-11-18 02:16:21. Total running time: 20min 52s
+(func pid=6264) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00006_6_b=8,lr=0.0848,m=0.9000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial train_lwf_cdd70_00008 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00008 config             │
+├────────────────────────────────────────────────┤
+│ b                                           16 │
+│ lr                                     0.01373 │
+│ m                                          0.6 │
+╰────────────────────────────────────────────────╯
+(func pid=19412) (1, 1) [repeated 3x across cluster]
+
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:16:31. Total running time: 21min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412) Files already downloaded and verified
+(func pid=19412) Files already downloaded and verified
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:17:01. Total running time: 21min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        1            168.928   0.456698     0.593182 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+
+Trial train_lwf_cdd70_00005 finished iteration 2 at 2024-11-18 02:17:04. Total running time: 21min 35s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000001 │
+│ time_this_iter_s                               163.84338 │
+│ time_total_s                                   332.77136 │
+│ training_iteration                                     2 │
+│ accuracy                                         0.59773 │
+│ loss                                             0.47667 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00005 saved a checkpoint for iteration 2 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000001
+(func pid=19860) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000001)
+(func pid=8052)
+
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:17:31. Total running time: 22min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        2            332.771   0.476674     0.597727 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:18:01. Total running time: 22min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        2            332.771   0.476674     0.597727 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:18:31. Total running time: 23min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        2            332.771   0.476674     0.597727 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+(func pid=19412)
+Trial status: 6 TERMINATED | 3 RUNNING | 1 PENDING
+Current time: 2024-11-18 02:19:02. Total running time: 23min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        2            332.771   0.476674     0.597727 │
+│ train_lwf_cdd70_00007   RUNNING      0.7   0.0593676     2                                                     │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00009   PENDING      0.9   0.0926267     4                                                     │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+(func pid=8052)
+
+Trial train_lwf_cdd70_00007 finished iteration 1 at 2024-11-18 02:19:14. Total running time: 23min 45s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00007 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               326.86041 │
+│ time_total_s                                   326.86041 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.57045 │
+│ loss                                             1.02351 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00007 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00007_7_b=2,lr=0.0594,m=0.7000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial train_lwf_cdd70_00007 completed after 1 iterations at 2024-11-18 02:19:14. Total running time: 23min 45s
+(func pid=8052) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00007_7_b=2,lr=0.0594,m=0.7000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial train_lwf_cdd70_00009 started with configuration:
+╭────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00009 config             │
+├────────────────────────────────────────────────┤
+│ b                                            4 │
+│ lr                                     0.09263 │
+│ m                                          0.9 │
+╰────────────────────────────────────────────────╯
+(func pid=16180) (1, 1) [repeated 3x across cluster]
+(func pid=16180) Files already downloaded and verified
+(func pid=16180) Files already downloaded and verified
+
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:19:32. Total running time: 24min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        2            332.771   0.476674     0.597727 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16                                                     │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+
+Trial train_lwf_cdd70_00008 finished iteration 1 at 2024-11-18 02:19:42. Total running time: 24min 13s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00008 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                               190.41753 │
+│ time_total_s                                   190.41753 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.57273 │
+│ loss                                              0.4675 │
+╰──────────────────────────────────────────────────────────╯
+(func pid=19412) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000000)
+Trial train_lwf_cdd70_00008 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000000
+(func pid=19860)
+
+Trial train_lwf_cdd70_00005 finished iteration 3 at 2024-11-18 02:19:52. Total running time: 24min 23s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000002 │
+│ time_this_iter_s                               167.61046 │
+│ time_total_s                                   500.38181 │
+│ training_iteration                                     3 │
+│ accuracy                                         0.57955 │
+│ loss                                              0.4459 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00005 saved a checkpoint for iteration 3 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000002
+(func pid=19860) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000002)
+
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:20:02. Total running time: 24min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:20:32. Total running time: 25min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+2024-11-18 02:20:48,713	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 30.25 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+2024-11-18 02:20:58,788	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 40.33 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:21:02. Total running time: 25min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+2024-11-18 02:21:08,820	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 50.36 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+2024-11-18 02:21:18,852	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 60.39 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+2024-11-18 02:21:28,941	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 70.49 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:21:32. Total running time: 26min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+2024-11-18 02:21:39,020	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 80.56 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+2024-11-18 02:21:49,170	WARNING experiment_state.py:230 -- Saving the experiment state (which holds a global view of trial statuses and is used to restore the experiment) has already taken 90.70 seconds, which may cause consistency issues upon restoration if your driver script ungracefully exits.
+This could be due to a large number of trials, large logfiles from lots of reported metrics, or throttling from the remote storage if uploading too frequently.
+You may want to consider switching the `RunConfig(storage_filesystem)` to a more performant storage backend such as s3fs for a S3 storage path.
+You can suppress this error by setting the environment variable TUNE_WARN_SLOW_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a higher value than the current threshold (30.0).
+(func pid=19860)
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:22:02. Total running time: 26min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+(func pid=19412)
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:22:32. Total running time: 27min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        3            500.382   0.445904     0.579545 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+(func pid=19860)
+
+Trial train_lwf_cdd70_00005 finished iteration 4 at 2024-11-18 02:22:54. Total running time: 27min 25s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000003 │
+│ time_this_iter_s                               182.33407 │
+│ time_total_s                                   682.71588 │
+│ training_iteration                                     4 │
+│ accuracy                                         0.58182 │
+│ loss                                             0.35239 │
+╰──────────────────────────────────────────────────────────╯
+(func pid=19860) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000003)
+Trial train_lwf_cdd70_00005 saved a checkpoint for iteration 4 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000003
+
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:23:02. Total running time: 27min 33s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        1            190.418   0.467498     0.572727 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+
+Trial train_lwf_cdd70_00008 finished iteration 2 at 2024-11-18 02:23:10. Total running time: 27min 41s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00008 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000001 │
+│ time_this_iter_s                               208.11926 │
+│ time_total_s                                   398.53679 │
+│ training_iteration                                     2 │
+│ accuracy                                         0.61818 │
+│ loss                                             0.39255 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00008 saved a checkpoint for iteration 2 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000001
+(func pid=19412) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000001)
+(func pid=16180)
+
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:23:32. Total running time: 28min 3s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:24:02. Total running time: 28min 34s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:24:32. Total running time: 29min 4s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)
+Trial status: 7 TERMINATED | 3 RUNNING
+Current time: 2024-11-18 02:25:03. Total running time: 29min 34s
+Logical resource usage: 6.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00009   RUNNING      0.9   0.0926267     4                                                     │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=16180)
+
+Trial train_lwf_cdd70_00009 finished iteration 1 at 2024-11-18 02:25:19. Total running time: 29min 51s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00009 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000000 │
+│ time_this_iter_s                                358.7956 │
+│ time_total_s                                    358.7956 │
+│ training_iteration                                     1 │
+│ accuracy                                         0.59091 │
+│ loss                                              0.6978 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00009 saved a checkpoint for iteration 1 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00009_9_b=4,lr=0.0926,m=0.9000_2024-11-18_01-55-28/checkpoint_000000
+
+Trial train_lwf_cdd70_00009 completed after 1 iterations at 2024-11-18 02:25:19. Total running time: 29min 51s
+(func pid=16180) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00009_9_b=4,lr=0.0926,m=0.9000_2024-11-18_01-55-28/checkpoint_000000)
+
+Trial status: 8 TERMINATED | 2 RUNNING
+Current time: 2024-11-18 02:25:33. Total running time: 30min 4s
+Logical resource usage: 4.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00005   RUNNING      0.6   0.025237      8        4            682.716   0.352392     0.581818 │
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19860)  [repeated 2x across cluster]
+
+Trial train_lwf_cdd70_00005 finished iteration 5 at 2024-11-18 02:25:41. Total running time: 30min 13s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00005 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000004 │
+│ time_this_iter_s                                167.3515 │
+│ time_total_s                                   850.06738 │
+│ training_iteration                                     5 │
+│ accuracy                                         0.66136 │
+│ loss                                              0.3589 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00005 saved a checkpoint for iteration 5 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000004
+
+Trial train_lwf_cdd70_00005 completed after 5 iterations at 2024-11-18 02:25:41. Total running time: 30min 13s
+(func pid=19860) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00005_5_b=8,lr=0.0252,m=0.6000_2024-11-18_01-55-28/checkpoint_000004)
+(func pid=19412)
+
+Trial status: 9 TERMINATED | 1 RUNNING
+Current time: 2024-11-18 02:26:03. Total running time: 30min 34s
+Logical resource usage: 2.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        2            398.537   0.392554     0.618182 │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   TERMINATED   0.6   0.025237      8        5            850.067   0.358903     0.661364 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Trial train_lwf_cdd70_00008 finished iteration 3 at 2024-11-18 02:26:03. Total running time: 30min 34s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00008 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000002 │
+│ time_this_iter_s                               172.85931 │
+│ time_total_s                                    571.3961 │
+│ training_iteration                                     3 │
+│ accuracy                                         0.60227 │
+│ loss                                             0.39421 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00008 saved a checkpoint for iteration 3 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000002
+(func pid=19412) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000002)
+
+Trial status: 9 TERMINATED | 1 RUNNING
+Current time: 2024-11-18 02:26:33. Total running time: 31min 4s
+Logical resource usage: 2.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        3            571.396   0.394214     0.602273 │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   TERMINATED   0.6   0.025237      8        5            850.067   0.358903     0.661364 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trial status: 9 TERMINATED | 1 RUNNING
+Current time: 2024-11-18 02:27:03. Total running time: 31min 34s
+Logical resource usage: 2.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        3            571.396   0.394214     0.602273 │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   TERMINATED   0.6   0.025237      8        5            850.067   0.358903     0.661364 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+Trial status: 9 TERMINATED | 1 RUNNING
+Current time: 2024-11-18 02:27:33. Total running time: 32min 4s
+Logical resource usage: 2.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00008   RUNNING      0.6   0.0137337    16        3            571.396   0.394214     0.602273 │
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   TERMINATED   0.6   0.025237      8        5            850.067   0.358903     0.661364 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(func pid=19412)
+(func pid=19412)
+
+Trial train_lwf_cdd70_00008 finished iteration 4 at 2024-11-18 02:27:43. Total running time: 32min 14s
+╭──────────────────────────────────────────────────────────╮
+│ Trial train_lwf_cdd70_00008 result                       │
+├──────────────────────────────────────────────────────────┤
+│ checkpoint_dir_name                    checkpoint_000003 │
+│ time_this_iter_s                                99.98075 │
+│ time_total_s                                   671.37685 │
+│ training_iteration                                     4 │
+│ accuracy                                         0.59318 │
+│ loss                                              0.3825 │
+╰──────────────────────────────────────────────────────────╯
+Trial train_lwf_cdd70_00008 saved a checkpoint for iteration 4 at: (local)C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000003
+
+Trial train_lwf_cdd70_00008 completed after 4 iterations at 2024-11-18 02:27:43. Total running time: 32min 14s
+2024-11-18 02:27:43,231	WARNING experiment_state.py:205 -- Experiment state snapshotting has been triggered multiple times in the last 5.0 seconds. A snapshot is forced if `CheckpointConfig(num_to_keep)` is set, and a trial has checkpointed >= `num_to_keep` times since the last snapshot.
+You may want to consider increasing the `CheckpointConfig(num_to_keep)` or decreasing the frequency of saving checkpoints.
+You can suppress this error by setting the environment variable TUNE_WARN_EXCESSIVE_EXPERIMENT_CHECKPOINT_SYNC_THRESHOLD_S to a smaller value than the current threshold (5.0).
+
+Trial status: 10 TERMINATED
+Current time: 2024-11-18 02:27:43. Total running time: 32min 14s
+Logical resource usage: 2.0/6 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:GTX)
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Trial name              status         m          lr     b     iter     total time (s)       loss     accuracy │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ train_lwf_cdd70_00000   TERMINATED   0.5   0.0692707    16        5           1080.02    0.326005     0.65     │
+│ train_lwf_cdd70_00001   TERMINATED   0.8   0.0550883     8        1            240.567   0.567043     0.627273 │
+│ train_lwf_cdd70_00002   TERMINATED   0.9   0.0833063    16        5           1002.06    0.64267      0.609091 │
+│ train_lwf_cdd70_00003   TERMINATED   0.6   0.0170884     8        2            375.549   0.488553     0.570455 │
+│ train_lwf_cdd70_00004   TERMINATED   0.8   0.0455095     2        1            281.637   0.863078     0.518182 │
+│ train_lwf_cdd70_00005   TERMINATED   0.6   0.025237      8        5            850.067   0.358903     0.661364 │
+│ train_lwf_cdd70_00006   TERMINATED   0.9   0.084832      8        1            238.052   0.99696      0.540909 │
+│ train_lwf_cdd70_00007   TERMINATED   0.7   0.0593676     2        1            326.86    1.02351      0.570455 │
+│ train_lwf_cdd70_00008   TERMINATED   0.6   0.0137337    16        4            671.377   0.382499     0.593182 │
+│ train_lwf_cdd70_00009   TERMINATED   0.9   0.0926267     4        1            358.796   0.697798     0.590909 │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+2024-11-18 02:27:43,243	INFO tune.py:1016 -- Wrote the latest version of all result files and experiment state to 'C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28' in 0.0199s.
+Best trial config: {'m': 0.5, 'lr': 0.06927066102656185, 'b': 16}
+Best trial final validation loss: 0.32600502776248114
+Best trial final validation accuracy: 0.65
+128
+(1, 1)
+(func pid=19412) Checkpoint successfully created at: Checkpoint(filesystem=local, path=C:/Users/Michałek/ray_results/train_lwf_2024-11-18_01-55-28/train_lwf_cdd70_00008_8_b=16,lr=0.0137,m=0.6000_2024-11-18_01-55-28/checkpoint_000003)
+Files already downloaded and verified
+Files already downloaded and verified
+accuracy: 100.0% [   16/ 2991]
+accuracy: 87.5% [   24/ 2991]
+accuracy: 95.8% [   32/ 2991]
+accuracy: 96.9% [   40/ 2991]
+accuracy: 100.0% [   48/ 2991]
+accuracy: 106.2% [   56/ 2991]
+accuracy: 108.9% [   64/ 2991]
+accuracy: 114.1% [   72/ 2991]
+accuracy: 111.1% [   80/ 2991]
+accuracy: 106.2% [   88/ 2991]
+accuracy: 106.8% [   96/ 2991]
+accuracy: 106.2% [  104/ 2991]
+accuracy: 103.8% [  112/ 2991]
+accuracy: 102.7% [  120/ 2991]
+accuracy: 102.5% [  128/ 2991]
+accuracy: 106.2% [  136/ 2991]
+accuracy: 105.9% [  144/ 2991]
+accuracy: 103.5% [  152/ 2991]
+accuracy: 103.9% [  160/ 2991]
+accuracy: 106.2% [  168/ 2991]
+accuracy: 107.1% [  176/ 2991]
+accuracy: 110.2% [  184/ 2991]
+accuracy: 110.9% [  192/ 2991]
+accuracy: 112.5% [  200/ 2991]
+accuracy: 114.0% [  208/ 2991]
+accuracy: 114.4% [  216/ 2991]
+accuracy: 116.7% [  224/ 2991]
+accuracy: 118.8% [  232/ 2991]
+accuracy: 120.7% [  240/ 2991]
+accuracy: 120.4% [  248/ 2991]
+accuracy: 121.0% [  256/ 2991]
+accuracy: 122.3% [  264/ 2991]
+accuracy: 122.3% [  272/ 2991]
+accuracy: 123.2% [  280/ 2991]
+accuracy: 123.9% [  288/ 2991]
+accuracy: 124.7% [  296/ 2991]
+accuracy: 126.0% [  304/ 2991]
+accuracy: 127.3% [  312/ 2991]
+accuracy: 127.2% [  320/ 2991]
+accuracy: 127.2% [  328/ 2991]
+accuracy: 127.7% [  336/ 2991]
+accuracy: 126.8% [  344/ 2991]
+accuracy: 125.9% [  352/ 2991]
+accuracy: 126.7% [  360/ 2991]
+accuracy: 125.6% [  368/ 2991]
+accuracy: 125.8% [  376/ 2991]
+accuracy: 125.0% [  384/ 2991]
+accuracy: 125.3% [  392/ 2991]
+accuracy: 124.2% [  400/ 2991]
+accuracy: 124.5% [  408/ 2991]
+accuracy: 124.5% [  416/ 2991]
+accuracy: 124.3% [  424/ 2991]
+accuracy: 123.1% [  432/ 2991]
+accuracy: 122.2% [  440/ 2991]
+accuracy: 122.3% [  448/ 2991]
+accuracy: 121.4% [  456/ 2991]
+accuracy: 122.1% [  464/ 2991]
+accuracy: 122.2% [  472/ 2991]
+accuracy: 122.5% [  480/ 2991]
+accuracy: 122.7% [  488/ 2991]
+accuracy: 123.6% [  496/ 2991]
+accuracy: 123.4% [  504/ 2991]
+accuracy: 123.6% [  512/ 2991]
+accuracy: 124.4% [  520/ 2991]
+accuracy: 125.2% [  528/ 2991]
+accuracy: 125.4% [  536/ 2991]
+accuracy: 125.0% [  544/ 2991]
+accuracy: 125.7% [  552/ 2991]
+accuracy: 125.7% [  560/ 2991]
+accuracy: 125.9% [  568/ 2991]
+accuracy: 125.7% [  576/ 2991]
+accuracy: 126.2% [  584/ 2991]
+accuracy: 126.9% [  592/ 2991]
+accuracy: 127.0% [  600/ 2991]
+accuracy: 127.8% [  608/ 2991]
+accuracy: 127.6% [  616/ 2991]
+accuracy: 126.8% [  624/ 2991]
+accuracy: 126.6% [  632/ 2991]
+accuracy: 126.6% [  640/ 2991]
+accuracy: 126.4% [  648/ 2991]
+accuracy: 126.2% [  656/ 2991]
+accuracy: 126.4% [  664/ 2991]
+accuracy: 125.9% [  672/ 2991]
+accuracy: 125.9% [  680/ 2991]
+accuracy: 125.1% [  688/ 2991]
+accuracy: 125.0% [  696/ 2991]
+accuracy: 125.0% [  704/ 2991]
+accuracy: 125.0% [  712/ 2991]
+accuracy: 124.9% [  720/ 2991]
+accuracy: 125.0% [  728/ 2991]
+accuracy: 124.6% [  736/ 2991]
+accuracy: 124.3% [  744/ 2991]
+accuracy: 124.2% [  752/ 2991]
+accuracy: 123.8% [  760/ 2991]
+accuracy: 124.3% [  768/ 2991]
+accuracy: 124.6% [  776/ 2991]
+accuracy: 125.0% [  784/ 2991]
+accuracy: 125.1% [  792/ 2991]
+accuracy: 125.5% [  800/ 2991]
+accuracy: 125.4% [  808/ 2991]
+accuracy: 125.4% [  816/ 2991]
+accuracy: 125.6% [  824/ 2991]
+accuracy: 125.6% [  832/ 2991]
+accuracy: 126.2% [  840/ 2991]
+accuracy: 126.3% [  848/ 2991]
+accuracy: 126.8% [  856/ 2991]
+accuracy: 126.9% [  864/ 2991]
+accuracy: 126.7% [  872/ 2991]
+accuracy: 126.7% [  880/ 2991]
+accuracy: 126.7% [  888/ 2991]
+accuracy: 126.9% [  896/ 2991]
+accuracy: 127.5% [  904/ 2991]
+accuracy: 127.5% [  912/ 2991]
+accuracy: 127.3% [  920/ 2991]
+accuracy: 127.5% [  928/ 2991]
+accuracy: 126.8% [  936/ 2991]
+accuracy: 126.7% [  944/ 2991]
+accuracy: 126.7% [  952/ 2991]
+accuracy: 126.5% [  960/ 2991]
+accuracy: 126.1% [  968/ 2991]
+accuracy: 125.9% [  976/ 2991]
+accuracy: 125.7% [  984/ 2991]
+accuracy: 125.8% [  992/ 2991]
+accuracy: 125.9% [ 1000/ 2991]
+accuracy: 125.5% [ 1008/ 2991]
+accuracy: 125.1% [ 1016/ 2991]
+accuracy: 125.0% [ 1024/ 2991]
+accuracy: 124.7% [ 1032/ 2991]
+accuracy: 124.9% [ 1040/ 2991]
+accuracy: 124.9% [ 1048/ 2991]
+accuracy: 124.8% [ 1056/ 2991]
+accuracy: 124.8% [ 1064/ 2991]
+accuracy: 125.0% [ 1072/ 2991]
+accuracy: 125.0% [ 1080/ 2991]
+accuracy: 125.3% [ 1088/ 2991]
+accuracy: 125.5% [ 1096/ 2991]
+accuracy: 125.8% [ 1104/ 2991]
+accuracy: 126.1% [ 1112/ 2991]
+accuracy: 126.3% [ 1120/ 2991]
+accuracy: 126.5% [ 1128/ 2991]
+accuracy: 126.8% [ 1136/ 2991]
+accuracy: 127.1% [ 1144/ 2991]
+accuracy: 127.4% [ 1152/ 2991]
+accuracy: 127.4% [ 1160/ 2991]
+accuracy: 127.4% [ 1168/ 2991]
+accuracy: 127.6% [ 1176/ 2991]
+accuracy: 127.8% [ 1184/ 2991]
+accuracy: 128.2% [ 1192/ 2991]
+accuracy: 128.6% [ 1200/ 2991]
+accuracy: 128.5% [ 1208/ 2991]
+accuracy: 128.6% [ 1216/ 2991]
+accuracy: 128.4% [ 1224/ 2991]
+accuracy: 128.0% [ 1232/ 2991]
+accuracy: 127.7% [ 1240/ 2991]
+accuracy: 127.4% [ 1248/ 2991]
+accuracy: 127.1% [ 1256/ 2991]
+accuracy: 127.2% [ 1264/ 2991]
+accuracy: 127.1% [ 1272/ 2991]
+accuracy: 127.3% [ 1280/ 2991]
+accuracy: 127.0% [ 1288/ 2991]
+accuracy: 127.2% [ 1296/ 2991]
+accuracy: 127.1% [ 1304/ 2991]
+accuracy: 126.9% [ 1312/ 2991]
+accuracy: 126.8% [ 1320/ 2991]
+accuracy: 126.8% [ 1328/ 2991]
+accuracy: 127.0% [ 1336/ 2991]
+accuracy: 126.6% [ 1344/ 2991]
+accuracy: 126.3% [ 1352/ 2991]
+accuracy: 126.4% [ 1360/ 2991]
+accuracy: 126.5% [ 1368/ 2991]
+accuracy: 126.6% [ 1376/ 2991]
+accuracy: 126.7% [ 1384/ 2991]
+accuracy: 126.8% [ 1392/ 2991]
+accuracy: 127.0% [ 1400/ 2991]
+accuracy: 127.3% [ 1408/ 2991]
+accuracy: 127.3% [ 1416/ 2991]
+accuracy: 127.5% [ 1424/ 2991]
+accuracy: 127.9% [ 1432/ 2991]
+accuracy: 128.0% [ 1440/ 2991]
+accuracy: 127.9% [ 1448/ 2991]
+accuracy: 127.9% [ 1456/ 2991]
+accuracy: 127.7% [ 1464/ 2991]
+accuracy: 127.7% [ 1472/ 2991]
+accuracy: 127.8% [ 1480/ 2991]
+accuracy: 128.0% [ 1488/ 2991]
+accuracy: 128.1% [ 1496/ 2991]
+accuracy: 128.1% [ 1503/ 2991]
+Test Error:
+ Accuracy: 64.1%, Avg loss: 0.000000
+
+Best trial test set accuracy: 0.6405884319625543
+
+Process finished with exit code 0
