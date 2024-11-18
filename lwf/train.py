@@ -14,13 +14,13 @@ from pathlib import Path
 
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', filename='logs.log', level=logging.INFO)
 
-MARGIN = 0.7
+MARGIN = 0.5
 IN_CHANNELS = 3
 IMAGE_H = 160
 IMAGE_W = 160
-LEARNING_RATE = 0.001
+LEARNING_RATE = 0.06927066102656185
 EPOCHS = 5
-BATCH_SIZE = 8
+BATCH_SIZE = 16
 FILENAME = 'lwf.pth'
 ONNX_FILENAME = 'lwf.onnx'
 CP_DIR_NUMBER = None
